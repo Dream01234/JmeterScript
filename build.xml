@@ -6,7 +6,7 @@
 	<property file="build.properties" />
 	<!-- 定义变量-->
 	<property environment="env" />
-	<property name="jmeter.home" value="/Users/convertlab-j/apache-jmeter-3.2"/>
+	<property name="jmeter.home" value="/usr/local/apache-jmeter-3.2"/>
 	<property name="test.plan.path" value="${basedir}/script/${ScriptName}"/>
 	<property name="test.result.path" value="${basedir}/result"/>
 	<property name="test.log.path" value="${basedir}/log"/>
