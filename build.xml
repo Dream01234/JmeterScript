@@ -20,6 +20,7 @@
 				 </fileset>
 	</copy>	
 	
+	
 	<!-- 设置ClassPath -->
     <path id="jmeter.classpath">
 		<fileset dir="${lib.dir}">
@@ -29,15 +30,27 @@
 	
 	<pathconvert pathsep=":"  property="jmeter.classpath" refid="jmeter.classpath"></pathconvert>
 
+	<!--清理环境 -->
+	<target name="init"
+					depends="cleanReport,download-plugin-manager,install-plugins"/>
+	
 	<!-- 设置运行Task -->
 	<target name="all"
-			depends="clean,show-test-properties,run,generate-report,generate-chart"/>
+			depends="clean,show-test-properties,run,generate-report"/>
 	
 	<!-- 清理环境 -->
 	<target name="clean">
 	     <delete dir="${test.result.path}"/>
 		 <delete dir="${test.log.path}"/>
 		 <delete dir="${test.report.path}"/>
+	</target>
+	
+	<target name="cleanReport">
+			 <delete dir="${jmeter.home}/bin/report-template"/>
+			 <copy todir="${jmeter.home}/bin/report-template">
+			        <fileset dir="${basedir}/report-template">
+			        </fileset>
+			  </copy>
 	</target>
 	
 	<!-- 显示参数 -->
@@ -57,7 +70,6 @@
 
 	<!-- 执行脚本 -->
 	<target name="run" depends="clean, show-test-properties">
-		
 		<!-- create dir -->
 		<mkdir  dir="${test.result.path}"/>
 		<mkdir  dir="${test.log.path}"/>
@@ -85,8 +97,6 @@
 			<property name="jmeter.save.saveservice.successful" value="true"/>
 			<property name="jmeter.save.saveservice.thread_counts" value="true"/>
 			<property name="jmeter.save.saveservice.thread_name" value="true"/>
-			
-			
 			
 			<!-- 设置参数 -->
 			<property name="threadgroup.count" value="${threadgroup.count}"/>
