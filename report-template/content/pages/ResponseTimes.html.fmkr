@@ -49,7 +49,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../index.html">${reportTitle!"性能测试"}</a>
+                <a class="navbar-brand" href="../../index.html">${reportTitle!"Apache JMeter Dashboard"}</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -59,38 +59,38 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="../../index.html"><i class="fa fa-dashboard fa-fw"></i>性能报告</a>
+                            <a href="../../index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 详细数据<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="OverTime.html">时间变化</a>
+                                    <a href="OverTime.html">Over Time</a>
 
                                 </li>
                                 <li>
-                                    <a href="Throughput.html">吞吐率</a>
+                                    <a href="Throughput.html">Throughput</a>
                                 </li>
                                 <li>
-                                    <a href="ResponseTimes.html">响应时间<span class="fa arrow"></span></a>
+                                    <a href="ResponseTimes.html">Response Times<span class="fa arrow"></span></a>
 
                                     <ul class="nav nav-third-level in" id="submenu">
                                         <li>
                                             <a href="ResponseTimes.html#responseTimePercentiles" onclick="$('#bodyResponseTimePercentiles').collapse('show');">
-                                                响应时间百分比
+                                                Response Time Percentiles
                                             </a>
                                         </li>
                                         <li>
                                             <a href="ResponseTimes.html#syntheticResponseTimeDistribution" onclick="$('#bodySyntheticResponseTimeDistribution').collapse('show');">
-                                                响应时间
+                                                Response Time Overview
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="ResponseTimes.html#timeVsThreads" onclick="$('#bodyTimeVsThreads').collapse('show');">响应时间与线程数的关系图</a>
+                                            <a href="ResponseTimes.html#timeVsThreads" onclick="$('#bodyTimeVsThreads').collapse('show');">Time Vs Threads</a>
                                         </li>
                                         <li>
                                             <a href="ResponseTimes.html#responseTimeDistribution" onclick="$('#bodyResponseTimeDistribution').collapse('show');">
-                                                响应时间分布
+                                                Response Time Distribution
                                             </a>
                                         </li>
                                     </ul>

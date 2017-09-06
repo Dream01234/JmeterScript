@@ -49,7 +49,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../index.html">${reportTitle!"性能测试"}</a>
+                <a class="navbar-brand" href="../../index.html">${reportTitle!"Apache JMeter Dashboard"}</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -59,37 +59,37 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href="../../index.html"><i class="fa fa-dashboard fa-fw"></i> 测试报告</a>
+                            <a href="../../index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 详细数据<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="OverTime.html">时间变化</a>
+                                    <a href="OverTime.html">Over Time</a>
                                 </li>
                                 <li>
-                                    <a href="Throughput.html">吞吐率<span class="fa arrow"></span></a>
+                                    <a href="Throughput.html">Throughput<span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level in" id="submenu">
                                         <li>
-                                            <a href="Throughput.html#hitsPerSecond" onclick="$('#bodyHitsPerSecond').collapse('show');">每秒请求数（HPS）</a>
+                                            <a href="Throughput.html#hitsPerSecond" onclick="$('#bodyHitsPerSecond').collapse('show');">Hits Per Second</a>
                                         </li>
 
                                         <li>
-                                            <a href="Throughput.html#codesPerSecond" onclick="$('#bodyCodesPerSecond').collapse('show');">每秒响应代码</a>
+                                            <a href="Throughput.html#codesPerSecond" onclick="$('#bodyCodesPerSecond').collapse('show');">Codes Per Second</a>
                                         </li>
                                         <li>
-                                            <a href="Throughput.html#transactionsPerSecond" onclick="$('#bodyTransactionsPerSecond').collapse('show');">事务吞吐量（TPS)</a>
+                                            <a href="Throughput.html#transactionsPerSecond" onclick="$('#bodyTransactionsPerSecond').collapse('show');">Transactions Per Second</a>
                                         </li>
                                         <li>
-                                            <a href="Throughput.html#responseTimeVsRequest" onclick="$('#bodyResponseTimeVsRequest').collapse('show');">平均响应时间</a>
+                                            <a href="Throughput.html#responseTimeVsRequest" onclick="$('#bodyResponseTimeVsRequest').collapse('show');">Response Time Vs Request</a>
                                         </li>
                                         <li>
-                                            <a href="Throughput.html#latencyVsRequest" onclick="$('#bodyLatenciesVsRequest').collapse('show');">平均延迟时间</a>
+                                            <a href="Throughput.html#latencyVsRequest" onclick="$('#bodyLatenciesVsRequest').collapse('show');">Latency Vs Request</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="ResponseTimes.html">响应时间</a>
+                                    <a href="ResponseTimes.html">Response Times</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
