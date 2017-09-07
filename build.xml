@@ -36,21 +36,23 @@
 	
 	<!-- 设置运行Task -->
 	<target name="all"
-			depends="clean,show-test-properties,run,generate-report"/>
+			depends="clean,cleanReport,show-test-properties,run,generate-report"/>
 	
 	<!-- 清理环境 -->
 	<target name="clean">
+		 <echo>清理环境数据</echo>
 	     <delete dir="${test.result.path}"/>
 		 <delete dir="${test.log.path}"/>
 		 <delete dir="${test.report.path}"/>
 	</target>
 	
 	<target name="cleanReport">
-			 <delete dir="${jmeter.home}/bin/report-template"/>
-			 <copy todir="${jmeter.home}/bin/report-template">
-			        <fileset dir="${basedir}/report-template">
-			        </fileset>
-			  </copy>
+		<echo>重置DashBoard模板</echo>
+		<delete dir="${jmeter.home}/bin/report-template"/>
+		<copy todir="${jmeter.home}/bin/report-template">
+			   <fileset dir="${basedir}/report-template">
+			   </fileset>
+		</copy>
 	</target>
 	
 	<!-- 显示参数 -->
@@ -60,6 +62,8 @@
 		<echo>THREADGROUP_COUNT			: ${threadgroup.count}</echo>
 		<echo>THREADGROUP_RAMPUP			: ${threadgroup.rampup}</echo>
 		<echo>THREADGROUP_DURATION		: ${threadgroup.duration}</echo>
+		<echo>Jmeter_Env		: ${Jmeter_Env}}</echo>
+		<echo>Content-Type		: ${Content-Type}}</echo>
 	</target>	
 
 	<!-- 运行脚本 -->
