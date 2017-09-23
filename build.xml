@@ -6,18 +6,12 @@
 	<property file="build.properties" />
 	<!-- 定义变量-->
 	<property environment="env" />
-	<property name="jmeter.home" value="/Users/convertlab-j/软件/apache-jmeter-3.2"/>
-	<property name="test.plan.path" value="${basedir}/script/Customer_Performance.jmx"/>
+	<property name="jmeter.home" value="/usr/local/apache-jmeter-3.2"/>
+	<property name="test.plan.path" value="${basedir}/script/${ScriptName}"/>
 	<property name="test.result.path" value="${basedir}/result"/>
 	<property name="test.log.path" value="${basedir}/log"/>
 	<property name="test.report.path" value="${basedir}/output"/>
 	<property name="lib.dir" value="${basedir}/lib"/>
-	<condition property="threadgroup.count" value="${threadgroup.count}" else="10">
-		<isset property="threadgroup.count" />
-	</condition>
-	<condition property="threadgroup.rampup" value="${threadgroup.rampup}" else="10">
-			<isset property="threadgroup.rampup" />
-	</condition>
 	
 	<!--负责jar文件到lib下-->
 	<copy todir="${jmeter.home}/lib">
