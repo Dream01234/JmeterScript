@@ -249,6 +249,49 @@ http://customer.service.consul:18009/listmemberbatchtasks?x_tenant_id=286</strin
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
+        <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
+          <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="graphiteMetricsSender" elementType="Argument">
+                <stringProp name="Argument.name">graphiteMetricsSender</stringProp>
+                <stringProp name="Argument.value">org.apache.jmeter.visualizers.backend.graphite.TextGraphiteMetricsSender</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="graphiteHost" elementType="Argument">
+                <stringProp name="Argument.name">graphiteHost</stringProp>
+                <stringProp name="Argument.value">192.168.2.252</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="graphitePort" elementType="Argument">
+                <stringProp name="Argument.name">graphitePort</stringProp>
+                <stringProp name="Argument.value">2003</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="rootMetricsPrefix" elementType="Argument">
+                <stringProp name="Argument.name">rootMetricsPrefix</stringProp>
+                <stringProp name="Argument.value">jmeter.</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="summaryOnly" elementType="Argument">
+                <stringProp name="Argument.name">summaryOnly</stringProp>
+                <stringProp name="Argument.value">true</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="samplersList" elementType="Argument">
+                <stringProp name="Argument.name">samplersList</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="percentiles" elementType="Argument">
+                <stringProp name="Argument.name">percentiles</stringProp>
+                <stringProp name="Argument.value">90;95;99</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="classname">org.apache.jmeter.visualizers.backend.graphite.GraphiteBackendListenerClient</stringProp>
+        </BackendListener>
+        <hashTree/>
       </hashTree>
       <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
         <stringProp name="ConstantTimer.delay">500</stringProp>
