@@ -50,12 +50,12 @@ String values = vars.get(&quot;Jmeter_Env&quot;);
 if(values==&quot;Test&quot;) {
     vars.put(&quot;Server&quot;,&quot;customer.service.consul&quot;);
     vars.put(&quot;Port&quot;,&quot;18009&quot;);
-    vars.put(&quot;x_tenant_id&quot;,&quot;286&quot;);
+    vars.put(&quot;x_tenant_id&quot;,&quot;313&quot;);
 }
 if(values==&quot;Validation&quot;) {
     vars.put(&quot;Server&quot;,&quot;121.40.166.114&quot;);
     vars.put(&quot;Port&quot;,&quot;8009&quot;);
-    vars.put(&quot;x_tenant_id&quot;,&quot;1014&quot;);
+    vars.put(&quot;x_tenant_id&quot;,&quot;1012&quot;);
 }
 if(values==&quot;Production&quot;) {
     vars.put(&quot;Server&quot;,&quot;121.40.166.114&quot;);
@@ -81,9 +81,9 @@ http://customer.service.consul:18009/listmemberbatchtasks?x_tenant_id=286</strin
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">10</stringProp>
+          <stringProp name="LoopController.loops">1000</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">100</stringProp>
+        <stringProp name="ThreadGroup.num_threads">500</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <longProp name="ThreadGroup.start_time">1505800426000</longProp>
         <longProp name="ThreadGroup.end_time">1505800426000</longProp>
@@ -101,19 +101,17 @@ http://customer.service.consul:18009/listmemberbatchtasks?x_tenant_id=286</strin
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-  &quot;email&quot;: &quot;01cauxf8eozo@aol.com&quot;,&#xd;
-  &quot;mobile&quot;: &quot;15303787996&quot;,&#xd;
-  &quot;qq&quot;: &quot;1234566&quot;&#xd;
+  &quot;name&quot;:&quot;test_${__time(yyyy-MM-dd,)}${__time(HH:MM:SS,)}&quot;&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">customer.service.consul</stringProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
             <stringProp name="HTTPSampler.port">18009</stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">customers?x_tenant_id=1012</stringProp>
+            <stringProp name="HTTPSampler.path">customers?x_tenant_id=313</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -124,7 +122,79 @@ http://customer.service.consul:18009/listmemberbatchtasks?x_tenant_id=286</strin
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
           <hashTree/>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
         </hashTree>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="聚合报告" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="创建流程" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -181,8 +251,8 @@ http://customer.service.consul:18009/listmemberbatchtasks?x_tenant_id=286</strin
       </ThreadGroup>
       <hashTree>
         <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="客户自增" enabled="true">
-          <stringProp name="CounterConfig.start">1109609</stringProp>
-          <stringProp name="CounterConfig.end">100000000</stringProp>
+          <stringProp name="CounterConfig.start">20029593</stringProp>
+          <stringProp name="CounterConfig.end">20520455</stringProp>
           <stringProp name="CounterConfig.incr">1</stringProp>
           <stringProp name="CounterConfig.name">customerId</stringProp>
           <stringProp name="CounterConfig.format"></stringProp>
@@ -200,7 +270,7 @@ http://customer.service.consul:18009/listmemberbatchtasks?x_tenant_id=286</strin
   &quot;event&quot;: &quot;submit_form&quot;,
   &quot;tag&quot;: &quot;null&quot;,
   &quot;channelType&quot;: &quot;wechat&quot;,
-  &quot;channelName&quot;: &quot;红烛学习中心&quot;,
+  &quot;channelName&quot;: &quot;性能压测&quot;,
   &quot;targetId&quot;: &quot;9c1b514ede0d45e593f81b1dbb16c64c&quot;,
   &quot;pageId&quot;: &quot;871027da3b294579b44a64e3f9f08987&quot;,
   &quot;customerId&quot;: ${customerId},
@@ -208,7 +278,7 @@ http://customer.service.consul:18009/listmemberbatchtasks?x_tenant_id=286</strin
   &quot;targetName&quot;: &quot;【回归】自定义类的字段是否更新&quot;,
   &quot;utma&quot;: &quot;1663881234.485488923.1149595394.1492602326.1492602407.4&quot;,
   &quot;userId&quot;: &quot;oBcVGs_yP80KJTAFSs8lQvtOULfU&quot;,
-  &quot;tenantId&quot;: 1012
+  &quot;tenantId&quot;: 313
 }</stringProp>
           </jmeter.kafka.sampler.KafkaProducerSampler>
           <hashTree/>
