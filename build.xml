@@ -7,7 +7,7 @@
 	<!-- 定义变量-->
 	<property environment="env" />
 	<property name="jmeter.home" value="/usr/local/apache-jmeter-3.2"/>
-	<property name="test.plan.path" value="${basedir}/script/${ScriptName}"/>
+	<property name="test.plan.path" value="${basedir}/script/${ScriptName}.jmx"/>
 	<property name="test.result.path" value="${basedir}/result"/>
 	<property name="test.log.path" value="${basedir}/log"/>
 	<property name="test.report.path" value="${basedir}/output"/>
@@ -115,7 +115,7 @@
 	 <target name="toMysql">        
 	        <java classname="com.jmeter.jtl.msql.JtlToMysql" 
 	         classpathref="jmeter.classpath">
-	           <arg value="${test.result.path}/result.jtl"/>
+	           <arg value="${test.result.path}/${ScriptName}.jtl"/>
 	        </java>
 
 	 </target>
@@ -125,7 +125,7 @@
 		  <mkdir  dir="${basedir}/output"/>
 		  <java jar="${jmeter.home}/bin/ApacheJMeter.jar" fork="true">
 				<arg value="-g" />
-				<arg value="${test.result.path}/result.jtl" />
+				<arg value="${test.result.path}/${ScriptName}.jtl" />
 				<arg value="-o" />
 				<arg value="${basedir}/output/" />
 		  </java>	
@@ -147,7 +147,7 @@
 						  <arg value="--generate-png"/>
 						  <arg value="${test.result.path}/@{reportType}.png"/>
 						  <arg value="--input-jtl"/>
-						  <arg value="${test.result.path}/result.jtl"/>
+						  <arg value="${test.result.path}/${ScriptName}.jtl"/>
 						  <arg value="--plugin-type"/>
 						  <arg value="@{reportType}"/>
 						  <arg value="--limit-rows"/>
