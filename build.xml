@@ -81,7 +81,7 @@
 		<jmeter
 			jmeterhome="${jmeter.home}"
 		    testplan ="${test.plan.path}"
-		    resultlog="${test.result.path}/result.jtl"
+		    resultlog="${test.result.path}/${ScriptName}.jtl"
 			jmeterlogfile="${test.log.path}/jmeter.log"
 			>
 			<jvmarg value="${jvm.arg}"/> 
