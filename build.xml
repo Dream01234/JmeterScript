@@ -83,6 +83,7 @@
 		    testplan ="${test.plan.path}"
 		    resultlog="${test.result.path}/${ScriptName}.jtl"
 			jmeterlogfile="${test.log.path}/jmeter.log"
+			runRemote="true"
 			>
 			<jvmarg value="${jvm.arg}"/> 
 			
