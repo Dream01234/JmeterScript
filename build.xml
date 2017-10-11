@@ -82,7 +82,7 @@
 		<jmeter
 			jmeterhome="${jmeter.home}"
 		    testplan ="${test.plan.path}"
-		    resultlog="${test.result.path}/${ScriptName}.jtl"
+		    resultlog="${test.result.path}/${testcase.scriptName}.jtl"
 			jmeterlogfile="${test.log.path}/jmeter.log"
 			runRemote="true"
 			>
