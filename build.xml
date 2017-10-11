@@ -59,6 +59,7 @@
 	<target name="show-test-properties">
 		<echo>JMETER_HOME				: ${jmeter.home}</echo>
 		<echo>TEST_PATH				: ${test.plan.path}</echo>
+		<echo>TEST_SCRIPTNAME			: ${testcase.scriptName}.jmx</echo>
 		<echo>THREADGROUP_COUNT			: ${threadgroup.count}</echo>
 		<echo>THREADGROUP_RAMPUP			: ${threadgroup.rampup}</echo>
 		<echo>THREADGROUP_DURATION		: ${threadgroup.duration}</echo>
@@ -126,7 +127,7 @@
 		  <mkdir  dir="${basedir}/output"/>
 		  <java jar="${jmeter.home}/bin/ApacheJMeter.jar" fork="true">
 				<arg value="-g" />
-				<arg value="${test.result.path}/${ScriptName}.jtl" />
+				<arg value="${test.result.path}/${testcase.scriptName}.jtl" />
 				<arg value="-o" />
 				<arg value="${basedir}/output/" />
 		  </java>	
