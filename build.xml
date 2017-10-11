@@ -7,7 +7,7 @@
 	<!-- 定义变量-->
 	<property environment="env" />
 	<property name="jmeter.home" value="/usr/local/apache-jmeter-3.2"/>
-	<property name="test.plan.path" value="${basedir}/script/${ScriptName}.jmx"/>
+	<property name="test.plan.path" value="${basedir}/script/${testcase.scriptName}.jmx"/>
 	<property name="test.result.path" value="${basedir}/result"/>
 	<property name="test.log.path" value="${basedir}/log"/>
 	<property name="test.report.path" value="${basedir}/output"/>
@@ -62,8 +62,8 @@
 		<echo>THREADGROUP_COUNT			: ${threadgroup.count}</echo>
 		<echo>THREADGROUP_RAMPUP			: ${threadgroup.rampup}</echo>
 		<echo>THREADGROUP_DURATION		: ${threadgroup.duration}</echo>
-		<echo>Jmeter_Env		: ${Jmeter_Env}}</echo>
-		<echo>Content-Type		: ${Content-Type}}</echo>
+		<echo>Jmeter_Env		: ${testcase.env}}</echo>
+		<echo>Content-Type		: ${testcase.type}}</echo>
 	</target>	
 
 	<!-- 运行脚本 -->
@@ -107,8 +107,8 @@
 			<property name="threadgroup.count" value="${threadgroup.count}"/>
 			<property name="threadgroup.rampup" value="${threadgroup.rampup}"/>
 			<property name="threadgroup.duration" value="${threadgroup.duration}"/>
-			<property name="Jmeter_Env" value="${Jmeter_Env}"/>
-			<property name="Content-Type" value="${Content-Type}"/>
+			<property name="Jmeter_Env" value="${testcase.env}"/>
+			<property name="Content-Type" value="${testcase.type}"/>
 			
 		</jmeter>
 	</target>
