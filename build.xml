@@ -148,7 +148,7 @@
 						  <arg value="--generate-png"/>
 						  <arg value="${test.result.path}/@{reportType}.png"/>
 						  <arg value="--input-jtl"/>
-						  <arg value="${test.result.path}/${ScriptName}.jtl"/>
+						  <arg value="${test.result.path}/${testcase.scriptName}.jtl"/>
 						  <arg value="--plugin-type"/>
 						  <arg value="@{reportType}"/>
 						  <arg value="--limit-rows"/>
