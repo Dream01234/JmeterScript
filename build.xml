@@ -63,8 +63,8 @@
 		<echo>THREADGROUP_COUNT			: ${threadgroup.count}</echo>
 		<echo>THREADGROUP_RAMPUP			: ${threadgroup.rampup}</echo>
 		<echo>THREADGROUP_DURATION		: ${threadgroup.duration}</echo>
-		<echo>Jmeter_Env		: ${testcase.env}}</echo>
-		<echo>Content-Type		: ${testcase.type}}</echo>
+		<echo>Jmeter_Env		: ${testcase.env}</echo>
+		<echo>Content-Type		: ${testcase.type}</echo>
 	</target>	
 
 	<!-- 运行脚本 -->
