@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,127.0.0.1:9999)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,10.0.3.80:9092)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
