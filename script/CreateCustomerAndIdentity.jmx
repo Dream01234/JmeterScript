@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
+  <hashTree>
+    <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="环境参数" enabled="true">
+      <collectionProp name="Arguments.arguments">
+        <elementProp name="threadgroup.count" elementType="Argument">
+          <stringProp name="Argument.name">threadgroup.count</stringProp>
+          <stringProp name="Argument.value">${__P(threadgroup.count,10)}</stringProp>
+          <stringProp name="Argument.metadata">=</stringProp>
+        </elementProp>
+        <elementProp name="threadgroup.rampup" elementType="Argument">
+          <stringProp name="Argument.name">threadgroup.rampup</stringProp>
+          <stringProp name="Argument.value">${__P(threadgroup.rampup,5)}</stringProp>
+          <stringProp name="Argument.metadata">=</stringProp>
+        </elementProp>
+        <elementProp name="threadgroup.duration" elementType="Argument">
+          <stringProp name="Argument.name">threadgroup.duration</stringProp>
+          <stringProp name="Argument.value">${__P(threadgroup.duration,1)}</stringProp>
+          <stringProp name="Argument.metadata">=</stringProp>
+        </elementProp>
+        <elementProp name="threadgroup.loops" elementType="Argument">
+          <stringProp name="Argument.name">threadgroup.loops</stringProp>
+          <stringProp name="Argument.value">${__P(threadgroup.loops,2)}</stringProp>
+          <stringProp name="Argument.metadata">=</stringProp>
+        </elementProp>
+        <elementProp name="testcase.env" elementType="Argument">
+          <stringProp name="Argument.name">testcase.env</stringProp>
+          <stringProp name="Argument.value">${__P(testcase.env,api.convertwork.cn)}</stringProp>
+          <stringProp name="Argument.metadata">=</stringProp>
+          <stringProp name="Argument.desc">请求环境</stringProp>
+        </elementProp>
+        <elementProp name="testcase.type" elementType="Argument">
+          <stringProp name="Argument.name">testcase.type</stringProp>
+          <stringProp name="Argument.value">${__P(testcase.type,application/json)}</stringProp>
+          <stringProp name="Argument.metadata">=</stringProp>
+          <stringProp name="Argument.desc">请求类型</stringProp>
+        </elementProp>
+        <elementProp name="aggregate.user" elementType="Argument">
+          <stringProp name="Argument.name">aggregate.user</stringProp>
+          <stringProp name="Argument.value">${__P(aggregate.user,0)}</stringProp>
+          <stringProp name="Argument.metadata">=</stringProp>
+          <stringProp name="Argument.desc">集合点等待用户数</stringProp>
+        </elementProp>
+        <elementProp name="aggregate.time" elementType="Argument">
+          <stringProp name="Argument.name">aggregate.time</stringProp>
+          <stringProp name="Argument.value">${__P(aggregate.time,0)}</stringProp>
+          <stringProp name="Argument.desc">超时时间设置</stringProp>
+          <stringProp name="Argument.metadata">=</stringProp>
+        </elementProp>
+        <elementProp name="think.time" elementType="Argument">
+          <stringProp name="Argument.name">think.time</stringProp>
+          <stringProp name="Argument.value">${__P(think.time,0)}</stringProp>
+          <stringProp name="Argument.desc">思考时间</stringProp>
+          <stringProp name="Argument.metadata">=</stringProp>
+        </elementProp>
+      </collectionProp>
+    </Arguments>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>
