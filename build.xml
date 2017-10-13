@@ -32,11 +32,11 @@
 
 	<!--清理环境 -->
 	<target name="init"
-					depends="cleanReport,download-plugin-manager,install-plugins"/>
+		depends="cleanReport,download-plugin-manager,install-plugins"/>
 	
 	<!-- 设置运行Task -->
 	<target name="all"
-			depends="clean,show-test-properties,run,toMysql,generate-report"/>
+		depends="clean,show-test-properties,run,toMysql,generate-report"/>
 	
 	<!-- 清理环境 -->
 	<target name="clean">
@@ -68,10 +68,8 @@
 	</target>	
 
 	<!-- 运行脚本 -->
-	<taskdef
-	    name="jmeter"
-	    classpathref="jmeter.classpath"
-	    classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask"/>
+	<taskdef name="jmeter" classpathref="jmeter.classpath"
+	   classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask"/>
 
 	<!-- 执行脚本 -->
 	<target name="run" depends="clean, show-test-properties">
@@ -85,10 +83,6 @@
 		    resultlog="${test.result.path}/${testcase.scriptName}.jtl"
 			jmeterlogfile="${test.log.path}/jmeter.log"
 			>
-			<jvmarg value="-Xincgc"/>
-        		<jvmarg value="-Xmx128m"/>
-        		<jvmarg value="-Dproperty=value"/>
-			
 			<!-- 修改默认配置 -->
 			<property name="jmeter.save.saveservice.output_format" value="csv"/>
 			<property name="jmeter.reportgenerator.report_title" value="性能测试"/>
@@ -111,7 +105,6 @@
 			<property name="threadgroup.duration" value="${threadgroup.duration}"/>
 			<property name="testcase.env" value="${testcase.env}"/>
 			<property name="testcase.type" value="${testcase.type}"/>
-			
 		</jmeter>
 	</target>
 	
