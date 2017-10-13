@@ -36,7 +36,7 @@
 	
 	<!-- 设置运行Task -->
 	<target name="all"
-			depends="clean,cleanReport,show-test-properties,run,toMysql,generate-report"/>
+			depends="clean,show-test-properties,run,toMysql,generate-report"/>
 	
 	<!-- 清理环境 -->
 	<target name="clean">
@@ -85,7 +85,9 @@
 		    resultlog="${test.result.path}/${testcase.scriptName}.jtl"
 			jmeterlogfile="${test.log.path}/jmeter.log"
 			>
-			<jvmarg value="${jvm.arg}"/> 
+			<jvmarg value="-Xincgc"/>
+        		<jvmarg value="-Xmx128m"/>
+        		<jvmarg value="-Dproperty=value"/>
 			
 			<!-- 修改默认配置 -->
 			<property name="jmeter.save.saveservice.output_format" value="csv"/>
