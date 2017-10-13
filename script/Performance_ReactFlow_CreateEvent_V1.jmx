@@ -227,7 +227,7 @@
               </elementProp>
               <elementProp name="samplersList" elementType="Argument">
                 <stringProp name="Argument.name">samplersList</stringProp>
-                <stringProp name="Argument.value">.*React_CreateEvent.*</stringProp>
+                <stringProp name="Argument.value">.*ReactFlow_CreateEvent.*</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="useRegexpForSamplersList" elementType="Argument">
