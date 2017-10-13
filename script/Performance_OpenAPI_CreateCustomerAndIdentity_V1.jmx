@@ -166,7 +166,7 @@
         </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Performance_OpenAPI_CreateCustomerAndIdentity_V1" enabled="true"/>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CreateCustomerAndIdentity" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="OpenAPI_CreateCustomerAndIdentity" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -235,7 +235,7 @@
               </elementProp>
               <elementProp name="samplersList" elementType="Argument">
                 <stringProp name="Argument.name">samplersList</stringProp>
-                <stringProp name="Argument.value">.*CreateCustomerAndIdentity.*</stringProp>
+                <stringProp name="Argument.value">.*OpenAPI_CreateCustomerAndIdentity.*</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="useRegexpForSamplersList" elementType="Argument">
