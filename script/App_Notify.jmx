@@ -103,34 +103,24 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="AppNotify" enabled="true">
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">${threadgroup.loops}</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${threadgroup.count}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${threadgroup.rampup}</stringProp>
-        <longProp name="ThreadGroup.start_time">1507874479000</longProp>
-        <longProp name="ThreadGroup.end_time">1507874479000</longProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1507912528000</longProp>
+        <longProp name="ThreadGroup.end_time">1507912528000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration">${threadgroup.duration}</stringProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
-        <boolProp name="ThreadGroup.delayedStart">true</boolProp>
-      </ThreadGroup>
+      </SetupThreadGroup>
       <hashTree>
-        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="false">
-          <stringProp name="ConstantTimer.delay">${think.time}</stringProp>
-        </ConstantTimer>
-        <hashTree/>
-        <SyncTimer guiclass="TestBeanGUI" testclass="SyncTimer" testname="Aggregate" enabled="false">
-          <stringProp name="groupSize">${aggregate.user}</stringProp>
-          <stringProp name="timeoutInMs">${aggregate.time}</stringProp>
-        </SyncTimer>
-        <hashTree/>
-        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Login" enabled="false"/>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Login" enabled="true"/>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="login" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="login" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="username" elementType="HTTPArgument">
@@ -165,6 +155,23 @@
           </HTTPSamplerProxy>
           <hashTree/>
         </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="AppNotify" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threadgroup.count}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${threadgroup.rampup}</stringProp>
+        <longProp name="ThreadGroup.start_time">1507874479000</longProp>
+        <longProp name="ThreadGroup.end_time">1507874479000</longProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${threadgroup.duration}</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.delayedStart">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="send_notify" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="send_notify" enabled="true">
@@ -236,6 +243,15 @@
           </elementProp>
           <stringProp name="classname">org.apache.jmeter.visualizers.backend.graphite.GraphiteBackendListenerClient</stringProp>
         </BackendListener>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="false">
+          <stringProp name="ConstantTimer.delay">${think.time}</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <SyncTimer guiclass="TestBeanGUI" testclass="SyncTimer" testname="Aggregate" enabled="false">
+          <stringProp name="groupSize">${aggregate.user}</stringProp>
+          <stringProp name="timeoutInMs">${aggregate.time}</stringProp>
+        </SyncTimer>
         <hashTree/>
       </hashTree>
     </hashTree>
