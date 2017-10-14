@@ -59,6 +59,7 @@
 	<target name="show-test-properties">
 		<echo>jmeter.home				: ${jmeter.home}</echo>
 		<echo>test.plan.path				: ${test.plan.path}</echo>
+		<echo>testcase.testName			: ${testcase.testName}</echo>
 		<echo>testcase.scriptName			: ${testcase.scriptName}.jmx</echo>
 		<echo>threadgroup.count			: ${threadgroup.count}</echo>
 		<echo>threadgroup.rampup			: ${threadgroup.rampup}</echo>
@@ -111,7 +112,7 @@
 	 <target name="toMysql">        
 	        <java classname="com.jmeter.jtl.msql.JtlToMysql" 
 	         classpathref="jmeter.classpath">
-	           <arg value="${test.result.path}/${testcase.scriptName}.jtl"/>
+	           <arg value="${test.result.path}/${testcase.scriptName}.jtl####${threadgroup.duration}####${testcase.testName}"/>
 	        </java>
 
 	 </target>
