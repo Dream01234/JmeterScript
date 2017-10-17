@@ -9,7 +9,7 @@
 	<property name="jmeter.home" value="/usr/local/apache-jmeter-3.3"/>
 	<property name="test.plan.path" value="${basedir}/script/${testcase.scriptName}.jmx"/>
 	<property name="test.result.path" value="${basedir}/result"/>
-	<property name="test.data.path" value="${basedir}/file/${testcase.fileName}"/>
+	<property name="test.data.path" value="${jmeter.home}/DataFile/customer_identity.csv"/>
 	<property name="test.log.path" value="${basedir}/log"/>
 	<property name="test.report.path" value="${basedir}/output"/>
 	<property name="lib.dir" value="${basedir}/lib"/>
