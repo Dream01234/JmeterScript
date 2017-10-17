@@ -407,11 +407,11 @@
           <stringProp name="classname">org.apache.jmeter.visualizers.backend.graphite.GraphiteBackendListenerClient</stringProp>
         </BackendListener>
         <hashTree/>
-        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="false">
           <stringProp name="ConstantTimer.delay">${think.time}</stringProp>
         </ConstantTimer>
         <hashTree/>
-        <SyncTimer guiclass="TestBeanGUI" testclass="SyncTimer" testname="Aggregate" enabled="true">
+        <SyncTimer guiclass="TestBeanGUI" testclass="SyncTimer" testname="Aggregate" enabled="false">
           <stringProp name="groupSize">${aggregate.user}</stringProp>
           <stringProp name="timeoutInMs">${aggregate.time}</stringProp>
         </SyncTimer>
