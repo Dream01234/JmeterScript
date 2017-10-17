@@ -12,7 +12,7 @@
 	<property name="test.data.path" value="${jmeter.home}/DataFile/customer_identity.csv"/>
 	<property name="test.log.path" value="${basedir}/log"/>
 	<property name="test.report.path" value="${basedir}/output"/>
-	<property name="lib.dir" value="${basedir}/lib"/>
+	<property name="lib.dir" value="${jmeter.home}/lib"/>
 	
 	<!--负责jar文件到lib下-->
 	<copy todir="${jmeter.home}/lib">
