@@ -9,6 +9,7 @@
 	<property name="jmeter.home" value="/usr/local/apache-jmeter-3.3"/>
 	<property name="test.plan.path" value="${basedir}/script/${testcase.scriptName}.jmx"/>
 	<property name="test.result.path" value="${basedir}/result"/>
+	<property name="test.data.path" value="${basedir}/file/${testcase.fileName}"/>
 	<property name="test.log.path" value="${basedir}/log"/>
 	<property name="test.report.path" value="${basedir}/output"/>
 	<property name="lib.dir" value="${basedir}/lib"/>
@@ -66,6 +67,7 @@
 		<echo>threadgroup.duration		: ${threadgroup.duration}</echo>
 		<echo>testcase.env	: ${testcase.env}</echo>
 		<echo>testcase.type		: ${testcase.type}</echo>
+		<echo>test.data.path:${test.data.path}</echo>
 	</target>	
 
 	<!-- 运行脚本 -->
@@ -106,6 +108,12 @@
 			<property name="threadgroup.duration" value="${threadgroup.duration}"/>
 			<property name="testcase.env" value="${testcase.env}"/>
 			<property name="testcase.type" value="${testcase.type}"/>
+			<property name="test.data.path" value="${test.data.path}"/>
+			<property name="testcase.jdbc.url" value="jdbc:mysql:rdskmsb1niuc6p91wg31.mysql.rds.aliyuncs.com:3306/xiaoshu"/>
+			<property name="testcase.redis.url" value="61140d4ee77349ab982.redis.rds.aliyuncs.com"/>
+			<property name="testcase.ids.url" value="61140d4ee77349ab982.redis.rds.aliyuncs.com"/>
+			<property name="testcase.kafka.url" value="172.16.2.52:9092"/>
+			<property name="testcase.kafka.url" value="1014"/>
 		</jmeter>
 	</target>
 	
