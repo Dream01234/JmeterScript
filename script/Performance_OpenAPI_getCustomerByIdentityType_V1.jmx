@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,api.dmhub.cn)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,api.convertwork.cn)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -65,6 +65,16 @@
             <stringProp name="Argument.name">think.time</stringProp>
             <stringProp name="Argument.value">${__P(think.time,0)}</stringProp>
             <stringProp name="Argument.desc">思考时间</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="secret" elementType="Argument">
+            <stringProp name="Argument.name">secret</stringProp>
+            <stringProp name="Argument.value">3b0dacfd0a64bb63f801575a2997271acea9919d</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="appid" elementType="Argument">
+            <stringProp name="Argument.name">appid</stringProp>
+            <stringProp name="Argument.value">cl01a015c820c814e</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -105,7 +115,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">security/accesstoken?grant_type=client_credentials&amp;appid=cl01a015c820c814e&amp;secret=3b0dacfd0a64bb63f801575a2997271acea9919d</stringProp>
+            <stringProp name="HTTPSampler.path">security/accesstoken?grant_type=client_credentials&amp;appid=${appid}&amp;secret=${secret}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
