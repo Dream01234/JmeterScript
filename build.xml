@@ -9,7 +9,7 @@
 	<property name="jmeter.home" value="/usr/local/apache-jmeter-3.3"/>
 	<property name="test.plan.path" value="${basedir}/script/${testcase.scriptName}.jmx"/>
 	<property name="test.result.path" value="${basedir}/result"/>
-	<property name="test.data.path" value="${jmeter.home}/DataFile/tracking_token_customer_mapping.csv"/>
+	<property name="test.data.path" value="${jmeter.home}/DataFile"/>
 	<property name="test.log.path" value="${basedir}/log"/>
 	<property name="test.report.path" value="${basedir}/output"/>
 	<property name="lib.dir" value="${basedir}/lib"/>
@@ -19,6 +19,13 @@
 				 <fileset dir="${user.dir}/lib">
 				 <include name="*.jar" />
 				 </fileset>
+	</copy>	
+	
+	<!--负责jar文件到lib下-->
+	<copy todir="${jmeter.home}/DataFile">
+			<fileset dir="${user.dir}/file">
+				<include name="*.*" />
+			</fileset>
 	</copy>	
 	
 	
