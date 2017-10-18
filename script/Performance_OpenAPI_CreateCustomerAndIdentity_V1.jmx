@@ -72,6 +72,16 @@
             <stringProp name="Argument.value">test_${__Random(1,1000,randomvalue)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="appid" elementType="Argument">
+            <stringProp name="Argument.name">appid</stringProp>
+            <stringProp name="Argument.value">cl01a015c820c814e</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="secret" elementType="Argument">
+            <stringProp name="Argument.name">secret</stringProp>
+            <stringProp name="Argument.value">3b0dacfd0a64bb63f801575a2997271acea9919d</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -84,7 +94,7 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Performance_OpenAPI_CreateCustomerAndIdentity_V1" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Performance_OpenAPI_CreateCustomerAndIdentity" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -147,7 +157,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">security/accesstoken?grant_type=client_credentials&amp;appid=cl01a015c820c814e&amp;secret=3b0dacfd0a64bb63f801575a2997271acea9919d</stringProp>
+            <stringProp name="HTTPSampler.path">security/accesstoken?grant_type=client_credentials&amp;appid=${appid}&amp;secret=${secret}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -169,7 +179,10 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Performance_OpenAPI_CreateCustomerAndIdentity_V1" enabled="true"/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Performance_OpenAPI_CreateCustomerAndIdentity_V1" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">10</stringProp>
+        </LoopController>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="OpenAPI_CreateCustomerAndIdentity" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
