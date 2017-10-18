@@ -296,7 +296,7 @@
               </elementProp>
               <elementProp name="samplersList" elementType="Argument">
                 <stringProp name="Argument.name">samplersList</stringProp>
-                <stringProp name="Argument.value">.*SyncIdentity.*</stringProp>
+                <stringProp name="Argument.value">.*SynTracking.*</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="percentiles" elementType="Argument">
