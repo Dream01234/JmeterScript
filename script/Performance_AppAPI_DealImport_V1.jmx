@@ -286,8 +286,8 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="AppAPI_DealImport_V01" enabled="true">
             <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
               <collectionProp name="HTTPFileArgs.files">
-                <elementProp name="${test.data.path}/【模板文件】20170101-20170115订单.csv" elementType="HTTPFileArg">
-                  <stringProp name="File.path">${test.data.path}/【模板文件】20170101-20170115订单.csv</stringProp>
+                <elementProp name="${test.data.path}/APPAPI_Order.csv" elementType="HTTPFileArg">
+                  <stringProp name="File.path">${test.data.path}/APPAPI_Order.csv</stringProp>
                   <stringProp name="File.paramname">file</stringProp>
                   <stringProp name="File.mimetype">application/octet-stream</stringProp>
                 </elementProp>
@@ -377,8 +377,8 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="AppAPI_DealImport_V03" enabled="true">
             <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
               <collectionProp name="HTTPFileArgs.files">
-                <elementProp name="${test.data.path}/【模板文件】20170101-20170115宝贝.csv" elementType="HTTPFileArg">
-                  <stringProp name="File.path">${test.data.path}/【模板文件】20170101-20170115宝贝.csv</stringProp>
+                <elementProp name="${test.data.path}/APPAPI_Baby.csv" elementType="HTTPFileArg">
+                  <stringProp name="File.path">${test.data.path}/APPAPI_Baby.csv</stringProp>
                   <stringProp name="File.paramname">file</stringProp>
                   <stringProp name="File.mimetype">application/octet-stream</stringProp>
                 </elementProp>
