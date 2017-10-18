@@ -15,19 +15,19 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="threadgroup.count" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.count</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.count,5)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.count,150)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">线程数</stringProp>
           </elementProp>
           <elementProp name="threadgroup.rampup" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.rampup</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.rampup,5)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.rampup,2)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">线程启动时间</stringProp>
           </elementProp>
           <elementProp name="threadgroup.duration" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.duration</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.duration,10)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.duration,3600)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">持续时间</stringProp>
           </elementProp>
@@ -94,6 +94,11 @@
           <elementProp name="testcase.ids.url" elementType="Argument">
             <stringProp name="Argument.name">testcase.ids.url</stringProp>
             <stringProp name="Argument.value">${__P(testcase.ids.url,jdbc:mysql://127.0.0.1:3306/xiaoshu)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="testcase.rediskey" elementType="Argument">
+            <stringProp name="Argument.name">testcase.rediskey</stringProp>
+            <stringProp name="Argument.value">etlv2::utma::313::</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -241,8 +246,7 @@
  try {
 	Jedis jredis=new Jedis(&quot;${testcase.redis.url}&quot;, 6379, 5000);
 	jredis.auth(&quot;Xiaoshu406&quot;);
-	String Data=jredis.get(&quot;etlv2::utma::313::${token}&quot;);
-	vars.put(&quot;aa&quot;,Data);
+	String Data=jredis.get(&quot;${testcase.rediskey}${token}&quot;);
 	if(Data.equals(&quot;${customer_id}&quot;)) {  
 	    Failure = false;  
 	    FailureMessage = &quot;同步Redis成功！&quot;;  
