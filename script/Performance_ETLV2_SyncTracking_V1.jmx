@@ -125,7 +125,7 @@
         <stringProp name="fileEncoding">UTF-8</stringProp>
         <stringProp name="filename">${test.data.path}/tracking_token_customer_mapping.csv</stringProp>
         <boolProp name="ignoreFirstLine">false</boolProp>
-        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="quotedData">true</boolProp>
         <boolProp name="recycle">true</boolProp>
         <stringProp name="shareMode">shareMode.all</stringProp>
         <boolProp name="stopThread">false</boolProp>

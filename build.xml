@@ -117,7 +117,7 @@
 			<property name="testcase.type" value="${testcase.type}"/>
 			<property name="test.data.path" value="${test.data.path}"/>
 			<property name="testcase.jdbc.url" value="jdbc:mysql://rdskmsb1niuc6p91wg31.mysql.rds.aliyuncs.com:3306/xiaoshu"/>
-			<property name="testcase.redis.url" value="172.16.0.86"/>
+			<property name="testcase.redis.url" value="61140d4ee77349ab982.redis.rds.aliyuncs.com"/>
 			<property name="testcase.ids.url" value="jdbc:mysql://rdskmsb1niuc6p91wg31.mysql.rds.aliyuncs.com:3306/xiaoshu"/>
 			<property name="testcase.kafka.url" value="172.16.2.52:9092"/>
 			<property name="testcase.kafka.url" value="1014"/>
