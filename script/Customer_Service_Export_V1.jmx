@@ -230,20 +230,7 @@
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
-          <hashTree>
-            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="false">
-              <stringProp name="filename"></stringProp>
-              <stringProp name="parameters"></stringProp>
-              <boolProp name="resetInterpreter">false</boolProp>
-              <stringProp name="script">import org.apache.jmeter.protocol.http.control.Header;
-
-//sampler.getHeaderManager().removeHeaderNamed(&quot;content-type&quot;);
-//sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
-//sampler.getHeaderManager();
-//sampler.getHeaderManager();</stringProp>
-            </BeanShellPreProcessor>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
         </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Customer_Service_Export_V1.jmx" enabled="true"/>
         <hashTree>
