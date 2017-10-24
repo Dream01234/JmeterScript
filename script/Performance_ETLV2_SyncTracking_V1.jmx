@@ -240,7 +240,7 @@
             <stringProp name="variableNames"></stringProp>
           </JDBCSampler>
           <hashTree>
-            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell断言" enabled="true">
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell断言" enabled="false">
               <stringProp name="BeanShellAssertion.query">import redis.clients.jedis.Jedis;
 
  try {
