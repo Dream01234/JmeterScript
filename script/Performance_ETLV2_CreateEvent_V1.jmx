@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,127.0.0.1:9097)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,127.0.0.1:9092)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -67,6 +67,11 @@
             <stringProp name="Argument.desc">思考时间</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="test.data.path" elementType="Argument">
+            <stringProp name="Argument.name">test.data.path</stringProp>
+            <stringProp name="Argument.value">${__P(test.data.path,/Users/convertlab-j/Desktop)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -79,17 +84,29 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+        <stringProp name="filename">${test.data.path}/kafka_ETL2.csv</stringProp>
+        <stringProp name="fileEncoding">UTF-8</stringProp>
+        <stringProp name="variableNames">date,utma,token,CSVuserAgent,ip,isFirstTry,domain,path,refDomain,refDomain,source,event,utmb,tenant_id,identityValue,identityType</stringProp>
+        <boolProp name="ignoreFirstLine">false</boolProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Performance_ETLV2_CreateEvent_V1" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <intProp name="LoopController.loops">-1</intProp>
+          <stringProp name="LoopController.loops">${threadgroup.duration}</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">${threadgroup.count}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${threadgroup.rampup}</stringProp>
         <longProp name="ThreadGroup.start_time">1507874479000</longProp>
         <longProp name="ThreadGroup.end_time">1507874479000</longProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration">${threadgroup.duration}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
@@ -175,26 +192,55 @@
         </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Performance_ETLV2_CreateEvent_V1" enabled="true"/>
         <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetUserAgent" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">127.0.0.1</stringProp>
+            <stringProp name="HTTPSampler.port">5000</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/?func=wap&amp;num=1</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="正则表达式提取器" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">UserAgent</stringProp>
+              <stringProp name="RegexExtractor.regex">.*?</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number"></stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
           <jmeter.kafka.sampler.KafkaProducerSampler guiclass="jmeter.kafka.sampler.KafkaProducerSamplerGui" testclass="jmeter.kafka.sampler.KafkaProducerSampler" testname="ETLV2_CreateEvent" enabled="true">
             <stringProp name="Kafka brokers">${testcase.env}</stringProp>
             <stringProp name="Kafka topic">customer_event_from_collectorsession</stringProp>
             <stringProp name="Kafka key">${customerId}</stringProp>
             <stringProp name="Request Data">{
-  &quot;date&quot;: &quot;2017-10-20T05:43:08Z&quot;,
-  &quot;domain&quot;: &quot;host.convertlab.com&quot;,
-  &quot;event&quot;: &quot;open_page&quot;,
-  &quot;identityType&quot;: &quot;wechat&quot;,
-  &quot;identityValue&quot;: &quot;oqmXXvxyHI1usarssivm_2qqlNSM&quot;,
-  &quot;ip&quot;: &quot;222.21.144.84&quot;,
-  &quot;isFirstTry&quot;: true,
-  &quot;path&quot;: &quot;/page/1126442647/6afdc45e70114c26a079f928d93cf6f4&quot;,
-  &quot;refDomain&quot;: &quot;host.convertlab.com&quot;,
+  &quot;date&quot;: &quot;${date}&quot;,
+  &quot;domain&quot;: &quot;${domain}&quot;,
+  &quot;event&quot;: &quot;${event}&quot;,
+  &quot;identityType&quot;: &quot;${identityType}&quot;,
+  &quot;identityValue&quot;: &quot;${identityValue}&quot;,
+  &quot;ip&quot;: &quot;${ip}&quot;,
+  &quot;isFirstTry&quot;: ${isFirstTry},
+  &quot;path&quot;: &quot;${path}&quot;,
+  &quot;refDomain&quot;: &quot;${refDomain}&quot;,
   &quot;source&quot;: &quot;外部链接&quot;,
   &quot;tenantId&quot;: 313,
-  &quot;token&quot;: &quot;1687195334.851796730&quot;,
-  &quot;userAgent&quot;: &quot;Mozilla/5.0 (Linux; Android 6.4.8; PLK-TL01H Build/HONORPLK-TL01H) AppleWebKit/205.15 (KHTML, like Gecko) Version/4.0 Chrome/29.6.9544.33 Mobile MQQBrowser/6.2 TBS/595185 Safari/205.15 MicroMessenger/6.1.6.8185 NetType/WIFI Language/zh_CN&quot;,
-  &quot;utma&quot;: &quot;1687195334.851796730.1126442647&quot;,
-  &quot;utmb&quot;: &quot;1687195334.851796730.1126442647&quot;
+  &quot;token&quot;: &quot;${refDomain}&quot;,
+  &quot;userAgent&quot;: &quot;${UserAgent}&quot;,
+  &quot;utma&quot;: &quot;${utma},
+  &quot;utmb&quot;: &quot;${utma}&quot;
 }</stringProp>
           </jmeter.kafka.sampler.KafkaProducerSampler>
           <hashTree/>
