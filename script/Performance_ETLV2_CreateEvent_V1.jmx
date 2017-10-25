@@ -27,7 +27,7 @@
           </elementProp>
           <elementProp name="threadgroup.duration" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.duration</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.duration,10)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.duration,100)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">持续时间</stringProp>
           </elementProp>
@@ -201,7 +201,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">192.168.2.252</stringProp>
+            <stringProp name="HTTPSampler.domain">127.0.0.1</stringProp>
             <stringProp name="HTTPSampler.port">5000</stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -225,7 +225,7 @@ vars.put(&quot;UserAgent&quot;,String.valueOf(response_data));</stringProp>
             </BeanShellPostProcessor>
             <hashTree/>
           </hashTree>
-          <jmeter.kafka.sampler.KafkaProducerSampler guiclass="jmeter.kafka.sampler.KafkaProducerSamplerGui" testclass="jmeter.kafka.sampler.KafkaProducerSampler" testname="ETLV2_CreateEvent" enabled="true">
+          <jmeter.kafka.sampler.KafkaProducerSampler guiclass="jmeter.kafka.sampler.KafkaProducerSamplerGui" testclass="jmeter.kafka.sampler.KafkaProducerSampler" testname="ETLV2_CreateEvent" enabled="false">
             <stringProp name="Kafka brokers">${testcase.kafka.url}</stringProp>
             <stringProp name="Kafka topic">customer_event_from_collectorsession</stringProp>
             <stringProp name="Kafka key">${customerId}</stringProp>
@@ -247,6 +247,56 @@ vars.put(&quot;UserAgent&quot;,String.valueOf(response_data));</stringProp>
   &quot;utmb&quot;: &quot;${utma}&quot;
 }</stringProp>
           </jmeter.kafka.sampler.KafkaProducerSampler>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Kafka Rest" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;topic&quot;: &quot;customer_event_from_collectorsession&quot;,&#xd;
+  &quot;messages&quot;: [&#xd;
+    {&#xd;
+      &quot;key&quot;: ${customerId},&#xd;
+      &quot;value&quot;: {&#xd;
+         &quot;date&quot;: &quot;${date}&quot;,&#xd;
+  		&quot;domain&quot;: &quot;${domain}&quot;,&#xd;
+  		&quot;event&quot;: &quot;${event}&quot;,&#xd;
+  		&quot;identityType&quot;: &quot;${identityType}&quot;,&#xd;
+  		&quot;identityValue&quot;: &quot;${identityValue}&quot;,&#xd;
+  		&quot;ip&quot;: &quot;${ip}&quot;,&#xd;
+ 		 &quot;isFirstTry&quot;: ${isFirstTry},&#xd;
+ 		 &quot;path&quot;: &quot;${path}&quot;,&#xd;
+ 		 &quot;refDomain&quot;: &quot;${refDomain}&quot;,&#xd;
+  		&quot;source&quot;: &quot;外部链接&quot;,&#xd;
+ 		 &quot;tenantId&quot;: 313,&#xd;
+  		&quot;token&quot;: &quot;${token}&quot;,&#xd;
+  		&quot;userAgent&quot;: &quot;${UserAgent}&quot;,&#xd;
+  		&quot;utma&quot;: &quot;${utma}&quot;,&#xd;
+  		&quot;utmb&quot;: &quot;${utma}&quot;&#xd;
+      }&#xd;
+    }&#xd;
+  ]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${testcase.env}</stringProp>
+            <stringProp name="HTTPSampler.port">18009</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/kafkaProxy/messages?x_tenant_id=313</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
           <hashTree/>
         </hashTree>
         <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
