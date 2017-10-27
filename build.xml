@@ -127,7 +127,7 @@
 	 <target name="toMysql">        
 	        <java classname="com.jmeter.jtl.msql.JtlToMysql" 
 	         classpathref="jmeter.classpath">
-	           <arg value="${test.result.path}/${testcase.scriptName}.jtl####${threadgroup.duration}####${testcase.caseID}"/>
+	           <arg value="${test.result.path}/${testcase.scriptName}.jtl####${testcase.caseID}"/>
 	        </java>
 
 	 </target>
