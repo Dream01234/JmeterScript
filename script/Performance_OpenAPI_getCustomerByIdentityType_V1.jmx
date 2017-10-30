@@ -15,13 +15,13 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="threadgroup.count" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.count</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.count,2)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.count,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">线程数</stringProp>
           </elementProp>
           <elementProp name="threadgroup.rampup" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.rampup</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.rampup,5)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.rampup,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">线程启动时间</stringProp>
           </elementProp>
@@ -33,13 +33,13 @@
           </elementProp>
           <elementProp name="threadgroup.loops" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.loops</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.loops,2)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.loops,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">循环次数</stringProp>
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,api.convertwork.cn)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,api.convertlab.com)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -93,13 +93,13 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <intProp name="LoopController.loops">-1</intProp>
+          <stringProp name="LoopController.loops">${threadgroup.loops}</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">${threadgroup.count}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${threadgroup.rampup}</stringProp>
         <longProp name="ThreadGroup.start_time">1507654887000</longProp>
         <longProp name="ThreadGroup.end_time">1507654887000</longProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration">${threadgroup.duration}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
@@ -117,7 +117,7 @@
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">security/accesstoken?grant_type=client_credentials&amp;appid=${appid}&amp;secret=${secret}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
             <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
@@ -158,7 +158,7 @@
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">v1/customeridentities?access_token=${accesstoken}&amp;identityType=wechat</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
             <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
