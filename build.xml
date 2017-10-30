@@ -72,8 +72,8 @@
 		<echo>threadgroup.count			: ${threadgroup.count}</echo>
 		<echo>threadgroup.rampup			: ${threadgroup.rampup}</echo>
 		<echo>threadgroup.duration		: ${threadgroup.duration}</echo>
+		<echo>threadgroup.loops		: ${threadgroup.loops}</echo>
 		<echo>testcase.env	: ${testcase.env}</echo>
-		<echo>testcase.type		: ${testcase.type}</echo>
 		<echo>test.data.path:${test.data.path}</echo>
 	</target>	
 
@@ -113,14 +113,13 @@
 			<property name="threadgroup.count" value="${threadgroup.count}"/>
 			<property name="threadgroup.rampup" value="${threadgroup.rampup}"/>
 			<property name="threadgroup.duration" value="${threadgroup.duration}"/>
+			<property name="threadgroup.loops" value="${threadgroup.loops}"/>
 			<property name="testcase.env" value="${testcase.env}"/>
-			<property name="testcase.type" value="${testcase.type}"/>
 			<property name="test.data.path" value="${test.data.path}"/>
 			<property name="testcase.jdbc.url" value="jdbc:mysql://rdskmsb1niuc6p91wg31.mysql.rds.aliyuncs.com:3306/xiaoshu"/>
 			<property name="testcase.redis.url" value="61140d4ee77349ab982.redis.rds.aliyuncs.com"/>
 			<property name="testcase.ids.url" value="jdbc:mysql://rdskmsb1niuc6p91wg31.mysql.rds.aliyuncs.com:3306/xiaoshu"/>
 			<property name="testcase.kafka.url" value="172.16.2.52:9092"/>
-			<property name="testcase.telant.id" value="1014"/>
 		</jmeter>
 	</target>
 	
