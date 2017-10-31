@@ -15,31 +15,31 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="threadgroup.count" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.count</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.count,5)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.count,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">线程数</stringProp>
           </elementProp>
           <elementProp name="threadgroup.rampup" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.rampup</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.rampup,5)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.rampup,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">线程启动时间</stringProp>
           </elementProp>
           <elementProp name="threadgroup.duration" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.duration</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.duration,10)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.duration,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">持续时间</stringProp>
           </elementProp>
           <elementProp name="threadgroup.loops" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.loops</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.loops,2)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.loops,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">循环次数</stringProp>
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,127.0.0.1)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,&quot;validation&quot;)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -70,6 +70,40 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
+      <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="获取环境参数" enabled="true">
+        <stringProp name="filename"></stringProp>
+        <stringProp name="parameters"></stringProp>
+        <boolProp name="resetInterpreter">false</boolProp>
+        <stringProp name="script">import com.jmeter.atf.ATFDic;
+vars.put(&quot;server_url&quot;,ATFDic.GetData(${testcase.env},&quot;openAPIserver&quot;));
+vars.put(&quot;appid&quot;,ATFDic.GetData(${testcase.env},&quot;appId&quot;));
+vars.put(&quot;secret&quot;,ATFDic.GetData(${testcase.env},&quot;secretID&quot;));
+
+
+//vars.put(&quot;mysql_rds_driver_url&quot;,&quot;11&quot;);</stringProp>
+      </BeanShellPreProcessor>
+      <hashTree/>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
+      </CookieManager>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">${server}</stringProp>
+        <stringProp name="HTTPSampler.port">${port}</stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+        <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </ConfigTestElement>
+      <hashTree/>
       <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="信息头管理器" enabled="true">
         <collectionProp name="HeaderManager.headers">
           <elementProp name="" elementType="Header">
@@ -95,7 +129,7 @@
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Login" enabled="false"/>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Login" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="login" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
@@ -131,38 +165,6 @@
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
           <hashTree/>
-        </hashTree>
-        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="GetToken" enabled="false"/>
-        <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetToken" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">api.convertwork.cn</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">security/accesstoken?grant_type=client_credentials&amp;appid=cl01a015c820c814e&amp;secret=3b0dacfd0a64bb63f801575a2997271acea9919d</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="GetToken" enabled="true">
-              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-              <stringProp name="RegexExtractor.refname">AccessToken</stringProp>
-              <stringProp name="RegexExtractor.regex">&quot;access_token&quot;:&quot;(.*)&quot;,&quot;expires_in&quot;:7200}</stringProp>
-              <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default"></stringProp>
-              <stringProp name="RegexExtractor.match_number">1</stringProp>
-            </RegexExtractor>
-            <hashTree/>
-          </hashTree>
         </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Performance_Sms_AppNotify_V1" enabled="true"/>
         <hashTree>

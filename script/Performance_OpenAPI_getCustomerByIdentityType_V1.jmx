@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,api.convertlab.com)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,&quot;production&quot;)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -67,16 +67,6 @@
             <stringProp name="Argument.desc">思考时间</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="secret" elementType="Argument">
-            <stringProp name="Argument.name">secret</stringProp>
-            <stringProp name="Argument.value">3b0dacfd0a64bb63f801575a2997271acea9919d</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="appid" elementType="Argument">
-            <stringProp name="Argument.name">appid</stringProp>
-            <stringProp name="Argument.value">cl01a015c820c814e</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -89,7 +79,20 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="getCustomerByIdentityTyp" enabled="true">
+      <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="获取环境参数" enabled="true">
+        <stringProp name="filename"></stringProp>
+        <stringProp name="parameters"></stringProp>
+        <boolProp name="resetInterpreter">false</boolProp>
+        <stringProp name="script">import com.jmeter.atf.ATFDic;
+vars.put(&quot;server_url&quot;,ATFDic.GetData(${testcase.env},&quot;openAPIserver&quot;));
+vars.put(&quot;appid&quot;,ATFDic.GetData(${testcase.env},&quot;appId&quot;));
+vars.put(&quot;secret&quot;,ATFDic.GetData(${testcase.env},&quot;secretID&quot;));
+
+
+//vars.put(&quot;mysql_rds_driver_url&quot;,&quot;11&quot;);</stringProp>
+      </BeanShellPreProcessor>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="getCustomerByIdentityType" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -111,7 +114,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${testcase.env}</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -152,7 +155,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${testcase.env}</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>

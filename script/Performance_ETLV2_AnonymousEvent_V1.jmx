@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,127.0.0.1)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,&quot;validation&quot;)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -100,6 +100,19 @@
         <boolProp name="stopThread">false</boolProp>
         <stringProp name="shareMode">shareMode.all</stringProp>
       </CSVDataSet>
+      <hashTree/>
+      <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="获取环境参数" enabled="true">
+        <stringProp name="filename"></stringProp>
+        <stringProp name="parameters"></stringProp>
+        <boolProp name="resetInterpreter">false</boolProp>
+        <stringProp name="script">import com.jmeter.atf.ATFDic;
+vars.put(&quot;server_url&quot;,ATFDic.GetData(${testcase.env},&quot;openAPIserver&quot;));
+vars.put(&quot;appid&quot;,ATFDic.GetData(${testcase.env},&quot;appId&quot;));
+vars.put(&quot;secret&quot;,ATFDic.GetData(${testcase.env},&quot;secretID&quot;));
+
+
+//vars.put(&quot;mysql_rds_driver_url&quot;,&quot;11&quot;);</stringProp>
+      </BeanShellPreProcessor>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Performance_ETLV2_AnonymousEvent_V1" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>

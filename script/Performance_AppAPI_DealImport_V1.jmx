@@ -11,55 +11,82 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Localhost Variables" enabled="false">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="环境参数" enabled="true">
         <collectionProp name="Arguments.arguments">
-          <elementProp name="username" elementType="Argument">
-            <stringProp name="Argument.name">username</stringProp>
-            <stringProp name="Argument.value">demo</stringProp>
+          <elementProp name="threadgroup.count" elementType="Argument">
+            <stringProp name="Argument.name">threadgroup.count</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.count,1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">线程数</stringProp>
+          </elementProp>
+          <elementProp name="threadgroup.rampup" elementType="Argument">
+            <stringProp name="Argument.name">threadgroup.rampup</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.rampup,1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">线程启动时间</stringProp>
+          </elementProp>
+          <elementProp name="threadgroup.duration" elementType="Argument">
+            <stringProp name="Argument.name">threadgroup.duration</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.duration,1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">持续时间</stringProp>
+          </elementProp>
+          <elementProp name="threadgroup.loops" elementType="Argument">
+            <stringProp name="Argument.name">threadgroup.loops</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.loops,2)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">循环次数</stringProp>
+          </elementProp>
+          <elementProp name="testcase.env" elementType="Argument">
+            <stringProp name="Argument.name">testcase.env</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,&quot;valdation&quot;)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">请求环境</stringProp>
+          </elementProp>
+          <elementProp name="testcase.type" elementType="Argument">
+            <stringProp name="Argument.name">testcase.type</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.type,application/json)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">请求类型</stringProp>
+          </elementProp>
+          <elementProp name="aggregate.user" elementType="Argument">
+            <stringProp name="Argument.name">aggregate.user</stringProp>
+            <stringProp name="Argument.value">${__P(aggregate.user,0)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">集合点等待用户数</stringProp>
+          </elementProp>
+          <elementProp name="aggregate.time" elementType="Argument">
+            <stringProp name="Argument.name">aggregate.time</stringProp>
+            <stringProp name="Argument.value">${__P(aggregate.time,0)}</stringProp>
+            <stringProp name="Argument.desc">超时时间设置</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="password" elementType="Argument">
-            <stringProp name="Argument.name">password</stringProp>
-            <stringProp name="Argument.value">demo</stringProp>
+          <elementProp name="think.time" elementType="Argument">
+            <stringProp name="Argument.name">think.time</stringProp>
+            <stringProp name="Argument.value">${__P(think.time,0)}</stringProp>
+            <stringProp name="Argument.desc">思考时间</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="server" elementType="Argument">
-            <stringProp name="Argument.name">server</stringProp>
-            <stringProp name="Argument.value">127.0.0.1</stringProp>
+          <elementProp name="test.data.path" elementType="Argument">
+            <stringProp name="Argument.name">test.data.path</stringProp>
+            <stringProp name="Argument.value">${__P(test.data.path,/Users/nick/Downloads/【模板文件】天猫订单导入 2/)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="port" elementType="Argument">
-            <stringProp name="Argument.name">port</stringProp>
-            <stringProp name="Argument.value">8001</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc"> 文件路径</stringProp>
           </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Test Variables" enabled="false">
-        <collectionProp name="Arguments.arguments">
-          <elementProp name="username" elementType="Argument">
-            <stringProp name="Argument.name">username</stringProp>
-            <stringProp name="Argument.value">9</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="password" elementType="Argument">
-            <stringProp name="Argument.name">password</stringProp>
-            <stringProp name="Argument.value">Xiaoshu406</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="server" elementType="Argument">
-            <stringProp name="Argument.name">server</stringProp>
-            <stringProp name="Argument.value">app.51convert.cn</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="port" elementType="Argument">
-            <stringProp name="Argument.name">port</stringProp>
-            <stringProp name="Argument.value">443</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-        </collectionProp>
-      </Arguments>
+      <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="获取环境参数" enabled="true">
+        <stringProp name="filename"></stringProp>
+        <stringProp name="parameters"></stringProp>
+        <boolProp name="resetInterpreter">false</boolProp>
+        <stringProp name="script">import com.jmeter.atf.ATFDic;
+
+vars.put(&quot;server_url&quot;,ATFDic.GetData(${testcase.env},&quot;openAPIserver&quot;));
+vars.put(&quot;appid&quot;,ATFDic.GetData(${testcase.env},&quot;appId&quot;));
+vars.put(&quot;secret&quot;,ATFDic.GetData(${testcase.env},&quot;secretID&quot;));
+</stringProp>
+      </BeanShellPreProcessor>
       <hashTree/>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Integration Variables" enabled="true">
         <collectionProp name="Arguments.arguments">
@@ -106,71 +133,6 @@
         <stringProp name="HTTPSampler.connect_timeout"></stringProp>
         <stringProp name="HTTPSampler.response_timeout"></stringProp>
       </ConfigTestElement>
-      <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="环境参数" enabled="true">
-        <collectionProp name="Arguments.arguments">
-          <elementProp name="threadgroup.count" elementType="Argument">
-            <stringProp name="Argument.name">threadgroup.count</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.count,1)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-            <stringProp name="Argument.desc">线程数</stringProp>
-          </elementProp>
-          <elementProp name="threadgroup.rampup" elementType="Argument">
-            <stringProp name="Argument.name">threadgroup.rampup</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.rampup,1)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-            <stringProp name="Argument.desc">线程启动时间</stringProp>
-          </elementProp>
-          <elementProp name="threadgroup.duration" elementType="Argument">
-            <stringProp name="Argument.name">threadgroup.duration</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.duration,1)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-            <stringProp name="Argument.desc">持续时间</stringProp>
-          </elementProp>
-          <elementProp name="threadgroup.loops" elementType="Argument">
-            <stringProp name="Argument.name">threadgroup.loops</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.loops,2)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-            <stringProp name="Argument.desc">循环次数</stringProp>
-          </elementProp>
-          <elementProp name="testcase.env" elementType="Argument">
-            <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,app.convertwork.cn)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-            <stringProp name="Argument.desc">请求环境</stringProp>
-          </elementProp>
-          <elementProp name="testcase.type" elementType="Argument">
-            <stringProp name="Argument.name">testcase.type</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.type,application/json)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-            <stringProp name="Argument.desc">请求类型</stringProp>
-          </elementProp>
-          <elementProp name="aggregate.user" elementType="Argument">
-            <stringProp name="Argument.name">aggregate.user</stringProp>
-            <stringProp name="Argument.value">${__P(aggregate.user,0)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-            <stringProp name="Argument.desc">集合点等待用户数</stringProp>
-          </elementProp>
-          <elementProp name="aggregate.time" elementType="Argument">
-            <stringProp name="Argument.name">aggregate.time</stringProp>
-            <stringProp name="Argument.value">${__P(aggregate.time,0)}</stringProp>
-            <stringProp name="Argument.desc">超时时间设置</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="think.time" elementType="Argument">
-            <stringProp name="Argument.name">think.time</stringProp>
-            <stringProp name="Argument.value">${__P(think.time,0)}</stringProp>
-            <stringProp name="Argument.desc">思考时间</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="test.data.path" elementType="Argument">
-            <stringProp name="Argument.name">test.data.path</stringProp>
-            <stringProp name="Argument.value">${__P(test.data.path,/Users/nick/Downloads/【模板文件】天猫订单导入 2/)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-            <stringProp name="Argument.desc"> 文件路径</stringProp>
-          </elementProp>
-        </collectionProp>
-      </Arguments>
       <hashTree/>
       <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="信息头管理器" enabled="false">
         <collectionProp name="HeaderManager.headers">
@@ -536,6 +498,42 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
           </HTTPSamplerProxy>
           <hashTree/>
         </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
       </hashTree>
     </hashTree>
     <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="工作台" enabled="true">

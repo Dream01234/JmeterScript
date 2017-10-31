@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,api.convertwork.cn)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,&quot;validation&quot;)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -67,21 +67,6 @@
             <stringProp name="Argument.desc">思考时间</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="testcase.customer.name" elementType="Argument">
-            <stringProp name="Argument.name">testcase.customer.name</stringProp>
-            <stringProp name="Argument.value">test_${__Random(1,1000,randomvalue)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="appid" elementType="Argument">
-            <stringProp name="Argument.name">appid</stringProp>
-            <stringProp name="Argument.value">cl01a015c820c814e</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="secret" elementType="Argument">
-            <stringProp name="Argument.name">secret</stringProp>
-            <stringProp name="Argument.value">3b0dacfd0a64bb63f801575a2997271acea9919d</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -93,6 +78,19 @@
           </elementProp>
         </collectionProp>
       </HeaderManager>
+      <hashTree/>
+      <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="根据环境获取 appid跟secret" enabled="true">
+        <stringProp name="filename"></stringProp>
+        <stringProp name="parameters"></stringProp>
+        <boolProp name="resetInterpreter">false</boolProp>
+        <stringProp name="script">import com.jmeter.atf.ATFDic;
+vars.put(&quot;server_url&quot;,ATFDic.GetData(${testcase.env},&quot;openAPIserver&quot;));
+vars.put(&quot;appid&quot;,ATFDic.GetData(${testcase.env},&quot;appId&quot;));
+vars.put(&quot;secret&quot;,ATFDic.GetData(${testcase.env},&quot;secretID&quot;));
+
+
+//vars.put(&quot;mysql_rds_driver_url&quot;,&quot;11&quot;);</stringProp>
+      </BeanShellPreProcessor>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Performance_OpenAPI_CreateCustomerAndIdentity" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -110,56 +108,19 @@
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Login" enabled="false"/>
-        <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="login" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="username" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">jack</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">username</stringProp>
-                </elementProp>
-                <elementProp name="password" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">Xiaoshu888</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">password</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">app.dmhub.cn</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol"></stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/login.html</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree/>
-        </hashTree>
         <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="GetToken" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetToken" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${testcase.env}</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">security/accesstoken?grant_type=client_credentials&amp;appid=${appid}&amp;secret=${secret}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
             <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
@@ -192,14 +153,14 @@
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
     &quot;customer&quot;:{&#xd;
-        &quot;name&quot;:&quot;${testcase.customer.name}&quot;,&#xd;
+        &quot;name&quot;:&quot;JmeterTest-lori&quot;,&#xd;
         &quot;gender&quot;:2&#xd;
     },&#xd;
     &quot;customerIdentities&quot;:[&#xd;
         {&#xd;
             &quot;identityName&quot;:&quot;sry身份&quot;,&#xd;
             &quot;identityType&quot;:&quot;sry&quot;,&#xd;
-            &quot;identityValue&quot;:&quot;testIdentityValue_${__Random(1,1000,randomvalue)}&quot; &#xd;
+            &quot;identityValue&quot;:&quot;IV_${__time(,)}${__Random(1,1000,randomvalue)}&quot; &#xd;
         }&#xd;
     ]&#xd;
 }</stringProp>
@@ -207,13 +168,13 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${testcase.env}</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">v1/customerandidentities?access_token=${AccessToken}</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
             <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
@@ -224,7 +185,7 @@
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="1516598152">&quot;name&quot;:&quot;${testcase.customer.name}&quot;</stringProp>
+                <stringProp name="847901181">&quot;name&quot;:&quot;</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
