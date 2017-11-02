@@ -15,31 +15,31 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="threadgroup.count" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.count</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.count,20)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.count,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">线程数</stringProp>
           </elementProp>
           <elementProp name="threadgroup.rampup" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.rampup</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.rampup,5)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.rampup,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">线程启动时间</stringProp>
           </elementProp>
           <elementProp name="threadgroup.duration" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.duration</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.duration,5)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.duration,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">持续时间</stringProp>
           </elementProp>
           <elementProp name="threadgroup.loops" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.loops</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.loops,2)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.loops,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">循环次数</stringProp>
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,cbe.convertwork.cn)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,&quot;validation&quot;)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -70,6 +70,25 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
+      <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="获取环境参数" enabled="true">
+        <stringProp name="filename"></stringProp>
+        <stringProp name="parameters"></stringProp>
+        <boolProp name="resetInterpreter">false</boolProp>
+        <stringProp name="script">import com.jmeter.atf.ATFDic;
+
+vars.put(&quot;server_url&quot;,ATFDic.GetData(${testcase.env},&quot;trackServer_ip&quot;));
+vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(${testcase.env},&quot;x_tenant_id&quot;));
+
+vars.put(&quot;tid&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_track_tid&quot;));
+vars.put(&quot;uuid&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_track_uuid&quot;));
+
+vars.put(&quot;appid&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_track_appid&quot;));
+vars.put(&quot;code&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_track_code&quot;));
+vars.put(&quot;openid&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_track_openid&quot;));
+vars.put(&quot;customerid&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_track_customerid&quot;));
+</stringProp>
+      </BeanShellPreProcessor>
+      <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WechatPage" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -86,7 +105,7 @@
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="默认变量" enabled="true">
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="默认变量" enabled="false">
           <collectionProp name="Arguments.arguments">
             <elementProp name="tid" elementType="Argument">
               <stringProp name="Argument.name">tid</stringProp>
@@ -156,7 +175,7 @@
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Referer</stringProp>
-              <stringProp name="Header.value">http://host.convertwork.cn/page/${tid}/${uuid}?code=${code}&amp;state=base&amp;appid=${appid}</stringProp>
+              <stringProp name="Header.value">http://${hostServer}/page/${tid}/${uuid}?code=${code}&amp;state=base&amp;appid=${appid}</stringProp>
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">User-Agent</stringProp>
@@ -186,7 +205,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${testcase.env}</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -241,7 +260,7 @@
                 </elementProp>
                 <elementProp name="utma" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${cla}.${clb}.${tid}.1507887680.1508123959.${sid}</stringProp>
+                  <stringProp name="Argument.value">${cla}.${clb}.${tid}.${__time(,)}.${__time(,)}.${sid}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">utma</stringProp>
@@ -297,7 +316,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${testcase.env}</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -356,7 +375,7 @@
                 </elementProp>
                 <elementProp name="utma" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">${cla}.${clb}.${tid}.1507887680.1508123959.${sid}</stringProp>
+                  <stringProp name="Argument.value">${cla}.${clb}.${tid}.${__time(,)}.${__time(,)}.${sid}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">utma</stringProp>
@@ -412,7 +431,7 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${testcase.env}</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>

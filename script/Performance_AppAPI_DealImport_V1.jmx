@@ -33,13 +33,13 @@
           </elementProp>
           <elementProp name="threadgroup.loops" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.loops</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.loops,2)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.loops,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">循环次数</stringProp>
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,&quot;valdation&quot;)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,&quot;validation&quot;)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -69,7 +69,7 @@
           </elementProp>
           <elementProp name="test.data.path" elementType="Argument">
             <stringProp name="Argument.name">test.data.path</stringProp>
-            <stringProp name="Argument.value">${__P(test.data.path,/Users/nick/Downloads/【模板文件】天猫订单导入 2/)}</stringProp>
+            <stringProp name="Argument.value">${__P(test.data.path,/Users/lori/Desktop/)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc"> 文件路径</stringProp>
           </elementProp>
@@ -82,13 +82,13 @@
         <boolProp name="resetInterpreter">false</boolProp>
         <stringProp name="script">import com.jmeter.atf.ATFDic;
 
-vars.put(&quot;server_url&quot;,ATFDic.GetData(${testcase.env},&quot;openAPIserver&quot;));
-vars.put(&quot;appid&quot;,ATFDic.GetData(${testcase.env},&quot;appId&quot;));
-vars.put(&quot;secret&quot;,ATFDic.GetData(${testcase.env},&quot;secretID&quot;));
+vars.put(&quot;server_url&quot;,ATFDic.GetData(${testcase.env},&quot;DMHUB&quot;));
+vars.put(&quot;username&quot;,ATFDic.GetData(${testcase.env},&quot;username&quot;));
+vars.put(&quot;password&quot;,ATFDic.GetData(${testcase.env},&quot;password&quot;));
 </stringProp>
       </BeanShellPreProcessor>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Integration Variables" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Integration Variables" enabled="false">
         <collectionProp name="Arguments.arguments">
           <elementProp name="username" elementType="Argument">
             <stringProp name="Argument.name">username</stringProp>
@@ -203,21 +203,21 @@ vars.put(&quot;secret&quot;,ATFDic.GetData(${testcase.env},&quot;secretID&quot;)
               <collectionProp name="Arguments.arguments">
                 <elementProp name="username" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">autotest</stringProp>
+                  <stringProp name="Argument.value">${username}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">username</stringProp>
                 </elementProp>
                 <elementProp name="password" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">Xiaoshu405</stringProp>
+                  <stringProp name="Argument.value">${password}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">password</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -260,7 +260,7 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">app.convertwork.cn</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -290,7 +290,7 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
               <collectionProp name="Arguments.arguments">
                 <elementProp name="_reqid" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">15082087518670</stringProp>
+                  <stringProp name="Argument.value">${__time(,)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">_reqid</stringProp>
@@ -304,7 +304,7 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">app.convertwork.cn</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -351,7 +351,7 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">app.convertwork.cn</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -381,7 +381,7 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
               <collectionProp name="Arguments.arguments">
                 <elementProp name="_reqid" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">15082087518681</stringProp>
+                  <stringProp name="Argument.value">${__time(,)}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">_reqid</stringProp>
@@ -395,7 +395,7 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">app.convertwork.cn</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -440,7 +440,7 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">app.convertwork.cn</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -482,7 +482,7 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">app.convertwork.cn</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>

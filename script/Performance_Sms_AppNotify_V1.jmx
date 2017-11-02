@@ -75,12 +75,16 @@
         <stringProp name="parameters"></stringProp>
         <boolProp name="resetInterpreter">false</boolProp>
         <stringProp name="script">import com.jmeter.atf.ATFDic;
-vars.put(&quot;server_url&quot;,ATFDic.GetData(${testcase.env},&quot;openAPIserver&quot;));
-vars.put(&quot;appid&quot;,ATFDic.GetData(${testcase.env},&quot;appId&quot;));
-vars.put(&quot;secret&quot;,ATFDic.GetData(${testcase.env},&quot;secretID&quot;));
 
+vars.put(&quot;server_url&quot;,ATFDic.GetData(${testcase.env},&quot;DMHUB&quot;));
+vars.put(&quot;username&quot;,ATFDic.GetData(${testcase.env},&quot;username&quot;));
+vars.put(&quot;password&quot;,ATFDic.GetData(${testcase.env},&quot;password&quot;));
 
-//vars.put(&quot;mysql_rds_driver_url&quot;,&quot;11&quot;);</stringProp>
+vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(${testcase.env},&quot;x_tenant_id&quot;));
+
+vars.put(&quot;jmeter_sms_appnotify_listId&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_sms_appnotify_listId&quot;));
+vars.put(&quot;jmeter_sms_appnotify_templateId&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_sms_appnotify_templateId&quot;));
+</stringProp>
       </BeanShellPreProcessor>
       <hashTree/>
       <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
@@ -136,23 +140,23 @@ vars.put(&quot;secret&quot;,ATFDic.GetData(${testcase.env},&quot;secretID&quot;)
               <collectionProp name="Arguments.arguments">
                 <elementProp name="username" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">jack</stringProp>
+                  <stringProp name="Argument.value">${username}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">username</stringProp>
                 </elementProp>
                 <elementProp name="password" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">Xiaoshu888</stringProp>
+                  <stringProp name="Argument.value">${password}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">password</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">app.dmhub.cn</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">/login.html</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -164,9 +168,24 @@ vars.put(&quot;secret&quot;,ATFDic.GetData(${testcase.env},&quot;secretID&quot;)
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
-          <hashTree/>
+          <hashTree>
+            <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.Header;
+
+sampler.getHeaderManager().removeHeaderNamed(&quot;content-type&quot;);
+sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
+</stringProp>
+            </BeanShellPreProcessor>
+            <hashTree/>
+          </hashTree>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Performance_Sms_AppNotify_V1" enabled="true"/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </LoopController>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Sms_AppNotify" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -174,16 +193,21 @@ vars.put(&quot;secret&quot;,ATFDic.GetData(${testcase.env},&quot;secretID&quot;)
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;listId&quot;:33140,&quot;type&quot;:&quot;manual&quot;,&quot;templateId&quot;:10,&quot;platform&quot;:&quot;android&quot;}</stringProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;listId&quot;:${jmeter_sms_appnotify_listId},&#xd;
+	&quot;type&quot;:&quot;manual&quot;,&#xd;
+	&quot;templateId&quot;:${jmeter_sms_appnotify_templateId},&#xd;
+	&quot;platform&quot;:&quot;both&quot;&#xd;
+}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${testcase.env}</stringProp>
-            <stringProp name="HTTPSampler.port">8017</stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">appnotification/mass_send?x_tenant_id=1</stringProp>
+            <stringProp name="HTTPSampler.path">appnotification/mass_send</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -193,7 +217,30 @@ vars.put(&quot;secret&quot;,ATFDic.GetData(${testcase.env},&quot;secretID&quot;)
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
-          <hashTree/>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="信息头管理器" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">${testcase.type}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">x_tenant_id</stringProp>
+                  <stringProp name="Header.value">${x_tenant_id}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="1602401043">&quot;templateId&quot;:${jmeter_sms_appnotify_templateId}</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
         </hashTree>
         <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
           <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
@@ -251,6 +298,42 @@ vars.put(&quot;secret&quot;,ATFDic.GetData(${testcase.env},&quot;secretID&quot;)
           <stringProp name="groupSize">${aggregate.user}</stringProp>
           <stringProp name="timeoutInMs">${aggregate.time}</stringProp>
         </SyncTimer>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
         <hashTree/>
       </hashTree>
     </hashTree>
