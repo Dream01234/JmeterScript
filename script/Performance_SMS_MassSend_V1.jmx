@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.3 r1808647">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,&quot;production&quot;)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,production)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -76,22 +76,21 @@
         <boolProp name="resetInterpreter">false</boolProp>
         <stringProp name="script">import com.jmeter.atf.ATFDic;
 
-vars.put(&quot;server_url&quot;,ATFDic.GetData(${testcase.env},&quot;DMHUB&quot;));
-vars.put(&quot;username&quot;,ATFDic.GetData(${testcase.env},&quot;username&quot;));
-vars.put(&quot;password&quot;,ATFDic.GetData(${testcase.env},&quot;password&quot;));
+vars.put(&quot;server_url&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;DMHUB&quot;));
+vars.put(&quot;username&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;username&quot;));
+vars.put(&quot;password&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;password&quot;));
 
-vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(${testcase.env},&quot;x_tenant_id&quot;));
+vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;x_tenant_id&quot;));
 
-vars.put(&quot;jmeter_sms_template&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_sms_template&quot;));
-vars.put(&quot;jmeter_sms_channel&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_sms_channel&quot;));
-vars.put(&quot;jmeter_sms_listId&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_sms_listId&quot;));
+vars.put(&quot;jmeter_sms_template&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_sms_template&quot;));
+vars.put(&quot;jmeter_sms_channel&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_sms_channel&quot;));
+vars.put(&quot;jmeter_sms_listId&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_sms_listId&quot;));
 </stringProp>
       </BeanShellPreProcessor>
       <hashTree/>
       <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
         <collectionProp name="CookieManager.cookies"/>
         <boolProp name="CookieManager.clearEachIteration">false</boolProp>
-        <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
       </CookieManager>
       <hashTree/>
       <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
