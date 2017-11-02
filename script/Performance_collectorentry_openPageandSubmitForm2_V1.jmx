@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.3 r1808647">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,&quot;validation&quot;)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,validation)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -76,16 +76,16 @@
         <boolProp name="resetInterpreter">false</boolProp>
         <stringProp name="script">import com.jmeter.atf.ATFDic;
 
-vars.put(&quot;server_url&quot;,ATFDic.GetData(${testcase.env},&quot;trackServer_ip&quot;));
-vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(${testcase.env},&quot;x_tenant_id&quot;));
+vars.put(&quot;server_url&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;trackServer_ip&quot;));
+vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;x_tenant_id&quot;));
 
-vars.put(&quot;tid&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_track_tid&quot;));
-vars.put(&quot;uuid&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_track_uuid&quot;));
+vars.put(&quot;tid&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_track_tid&quot;));
+vars.put(&quot;uuid&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_track_uuid&quot;));
 
-vars.put(&quot;appid&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_track_appid&quot;));
-vars.put(&quot;code&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_track_code&quot;));
-vars.put(&quot;openid&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_track_openid&quot;));
-vars.put(&quot;customerid&quot;,ATFDic.GetData(${testcase.env},&quot;jmeter_track_customerid&quot;));
+vars.put(&quot;appid&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_track_appid&quot;));
+vars.put(&quot;code&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_track_code&quot;));
+vars.put(&quot;openid&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_track_openid&quot;));
+vars.put(&quot;customerid&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_track_customerid&quot;));
 </stringProp>
       </BeanShellPreProcessor>
       <hashTree/>
