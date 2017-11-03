@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,127.0.0.1)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,validation)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -103,6 +103,19 @@
           </elementProp>
         </collectionProp>
       </Arguments>
+      <hashTree/>
+      <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="获取环境参数" enabled="true">
+        <stringProp name="filename"></stringProp>
+        <stringProp name="parameters"></stringProp>
+        <boolProp name="resetInterpreter">false</boolProp>
+        <stringProp name="script">import com.jmeter.atf.ATFDic;
+
+vars.put(&quot;server_url&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;customerServer&quot;));
+vars.put(&quot;server_port&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;customerServer_port&quot;));
+
+vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;x_tenant_id&quot;));
+</stringProp>
+      </BeanShellPreProcessor>
       <hashTree/>
       <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="Mysql-Validation" enabled="true">
         <boolProp name="autocommit">true</boolProp>
@@ -230,7 +243,7 @@
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="SynTracking" enabled="true">
             <stringProp name="dataSource">Mysql-Validation</stringProp>
-            <stringProp name="query">insert into tracking_token_customer_mapping(version,token,customer_id,date_created,last_updated,tenant_id,full_utma) value(${version},&apos;${token}&apos;,${customer_id},&apos;2017-01-01 01:01:01&apos;,&apos;2017-01-01 01:01:01&apos;,313,&apos;${full_utma}&apos;)</stringProp>
+            <stringProp name="query">insert into tracking_token_customer_mapping(version,token,customer_id,date_created,last_updated,tenant_id,full_utma) value(${version},&apos;${token}&apos;,${customer_id},&apos;2017-01-01 01:01:01&apos;,&apos;2017-01-01 01:01:01&apos;,${x_tenant_id},&apos;${full_utma}&apos;)</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>

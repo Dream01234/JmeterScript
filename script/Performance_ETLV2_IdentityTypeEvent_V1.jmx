@@ -15,31 +15,31 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="threadgroup.count" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.count</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.count,10)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.count,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">线程数</stringProp>
           </elementProp>
           <elementProp name="threadgroup.rampup" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.rampup</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.rampup,5)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.rampup,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">线程启动时间</stringProp>
           </elementProp>
           <elementProp name="threadgroup.duration" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.duration</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.duration,100)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.duration,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">持续时间</stringProp>
           </elementProp>
           <elementProp name="threadgroup.loops" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.loops</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.loops,2)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.loops,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">循环次数</stringProp>
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,127.0.0.1)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,validation)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -69,7 +69,7 @@
           </elementProp>
           <elementProp name="test.data.path" elementType="Argument">
             <stringProp name="Argument.name">test.data.path</stringProp>
-            <stringProp name="Argument.value">${__P(test.data.path,/Users/convertlab-j/Desktop)}</stringProp>
+            <stringProp name="Argument.value">${__P(test.data.path,/Users/lori/Desktop/00_i_JmeterScript/file)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="testcase.kafka.url" elementType="Argument">
@@ -79,6 +79,19 @@
           </elementProp>
         </collectionProp>
       </Arguments>
+      <hashTree/>
+      <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="获取环境参数" enabled="true">
+        <stringProp name="filename"></stringProp>
+        <stringProp name="parameters"></stringProp>
+        <boolProp name="resetInterpreter">false</boolProp>
+        <stringProp name="script">import com.jmeter.atf.ATFDic;
+
+vars.put(&quot;server_url&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;customerServer&quot;));
+vars.put(&quot;server_port&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;customerServer_port&quot;));
+
+vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;x_tenant_id&quot;));
+</stringProp>
+      </BeanShellPreProcessor>
       <hashTree/>
       <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="信息头管理器" enabled="true">
         <collectionProp name="HeaderManager.headers">
@@ -247,7 +260,7 @@ vars.put(&quot;UserAgent&quot;,String.valueOf(response_data));</stringProp>
  		&quot;path&quot;: &quot;${path}&quot;,&#xd;
  		&quot;refDomain&quot;: &quot;${refDomain}&quot;,&#xd;
   		&quot;source&quot;: &quot;外部链接&quot;,&#xd;
- 		&quot;tenantId&quot;: 313,&#xd;
+ 		&quot;tenantId&quot;: ${x_tenant_id},&#xd;
   		&quot;token&quot;: &quot;${token}&quot;,&#xd;
   		&quot;userAgent&quot;: &quot;${UserAgent}&quot;,&#xd;
   		&quot;utma&quot;: &quot;${utma}&quot;,&#xd;
@@ -260,11 +273,11 @@ vars.put(&quot;UserAgent&quot;,String.valueOf(response_data));</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${testcase.env}</stringProp>
-            <stringProp name="HTTPSampler.port">18009</stringProp>
+            <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
+            <stringProp name="HTTPSampler.port">${server_port}</stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/kafkaProxy/messages?x_tenant_id=313</stringProp>
+            <stringProp name="HTTPSampler.path">/kafkaProxy/messages?x_tenant_id=${x_tenant_id}</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
