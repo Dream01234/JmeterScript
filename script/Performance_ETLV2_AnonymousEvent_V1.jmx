@@ -106,7 +106,7 @@
         <stringProp name="parameters"></stringProp>
         <boolProp name="resetInterpreter">false</boolProp>
         <stringProp name="script">import com.jmeter.atf.ATFDic;
-vars.put(&quot;server_url&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;openAPIserver&quot;));
+vars.put(&quot;server_url&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;customerServer&quot;));
 vars.put(&quot;server_port&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;customerServer_port&quot;));
 
 
