@@ -96,7 +96,7 @@ vars.put(&quot;secret&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;sec
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">${threadgroup.rampup}</stringProp>
+          <stringProp name="LoopController.loops">${threadgroup.loops}</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">${threadgroup.count}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${threadgroup.rampup}</stringProp>
