@@ -153,13 +153,13 @@ vars.put(&quot;secret&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;sec
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
     &quot;customer&quot;:{&#xd;
-        &quot;name&quot;:&quot;JmeterTest-lori&quot;,&#xd;
-        &quot;gender&quot;:2&#xd;
+        &quot;name&quot;:&quot;JmeterTest&quot;,&#xd;
+        &quot;gender&quot;:${__Random(1,2,randomvalue)}&#xd;
     },&#xd;
     &quot;customerIdentities&quot;:[&#xd;
         {&#xd;
-            &quot;identityName&quot;:&quot;sry身份&quot;,&#xd;
-            &quot;identityType&quot;:&quot;sry&quot;,&#xd;
+            &quot;identityName&quot;:&quot;wechat&quot;,&#xd;
+            &quot;identityType&quot;:&quot;wechat&quot;,&#xd;
             &quot;identityValue&quot;:&quot;IV_${__time(,)}${__Random(1,1000,randomvalue)}&quot; &#xd;
         }&#xd;
     ]&#xd;
@@ -250,6 +250,42 @@ vars.put(&quot;secret&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;sec
           <stringProp name="groupSize">${aggregate.user}</stringProp>
           <stringProp name="timeoutInMs">${aggregate.time}</stringProp>
         </SyncTimer>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
