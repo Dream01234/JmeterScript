@@ -107,8 +107,8 @@ vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
       </ThreadGroup>
       <hashTree>
         <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="客户自增" enabled="true">
-          <stringProp name="CounterConfig.start">20029593</stringProp>
-          <stringProp name="CounterConfig.end">20520455</stringProp>
+          <stringProp name="CounterConfig.start">4443174</stringProp>
+          <stringProp name="CounterConfig.end">24443174</stringProp>
           <stringProp name="CounterConfig.incr">1</stringProp>
           <stringProp name="CounterConfig.name">customerId</stringProp>
           <stringProp name="CounterConfig.format"></stringProp>
