@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,validation)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,production)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -184,6 +184,12 @@ vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
             <hashTree/>
           </hashTree>
         </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Performance_ReactFlow_CreateEvent_V1" enabled="true"/>
         <hashTree>
           <jmeter.kafka.sampler.KafkaProducerSampler guiclass="jmeter.kafka.sampler.KafkaProducerSamplerGui" testclass="jmeter.kafka.sampler.KafkaProducerSampler" testname="ReactFlow_CreateEvent" enabled="true">
@@ -194,17 +200,20 @@ vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
   &quot;ip&quot;: &quot;&quot;,
   &quot;event&quot;: &quot;submit_form&quot;,
   &quot;tag&quot;: &quot;null&quot;,
-  &quot;channelType&quot;: &quot;wechat&quot;,
-  &quot;channelName&quot;: &quot;性能压测&quot;,
-  &quot;targetId&quot;: &quot;9c1b514ede0d45e593f81b1dbb16c64c&quot;,
-  &quot;pageId&quot;: &quot;871027da3b294579b44a64e3f9f08987&quot;,
+  &quot;channelType&quot;: &quot;&quot;,
+  &quot;targetId&quot;: &quot;5c501abfe38347a0a6cacd9bc5f4efc2&quot;,
+  &quot;pageId&quot;: &quot;96167772ad0d4822addc0bcf898360ed&quot;,
   &quot;customerId&quot;: ${customerId},
   &quot;date&quot;: &quot;${__time(yyyy-MM-dd,)}T${__time(HH:MM:SS,)}Z&quot;,
-  &quot;targetName&quot;: &quot;【回归】自定义类的字段是否更新&quot;,
-  &quot;utma&quot;: &quot;1663881234.485488923.1149595394.1492602326.1492602407.4&quot;,
-  &quot;userId&quot;: &quot;oBcVGs_yP80KJTAFSs8lQvtOULfU&quot;,
+  &quot;targetName&quot;: &quot;asdf&quot;,
+  &quot;utma&quot;: &quot;1411561817.293247106.1032079986.1510131488.1510131488.1&quot;,
+  &quot;userId&quot;: &quot;&quot;,
   &quot;tenantId&quot;: ${x_tenant_id}
-}</stringProp>
+}
+
+
+
+</stringProp>
           </jmeter.kafka.sampler.KafkaProducerSampler>
           <hashTree/>
         </hashTree>
