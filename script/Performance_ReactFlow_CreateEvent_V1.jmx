@@ -200,7 +200,7 @@ vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
   &quot;ip&quot;: &quot;&quot;,
   &quot;event&quot;: &quot;submit_form&quot;,
   &quot;tag&quot;: &quot;null&quot;,
-  &quot;channelType&quot;: &quot;&quot;,
+  &quot;channelType&quot;: &quot;Performance_Test&quot;,
   &quot;targetId&quot;: &quot;5c501abfe38347a0a6cacd9bc5f4efc2&quot;,
   &quot;pageId&quot;: &quot;96167772ad0d4822addc0bcf898360ed&quot;,
   &quot;customerId&quot;: ${customerId},
