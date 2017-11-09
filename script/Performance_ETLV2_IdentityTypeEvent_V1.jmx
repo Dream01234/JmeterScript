@@ -90,6 +90,8 @@ vars.put(&quot;server_url&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot
 vars.put(&quot;server_port&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;customerServer_port&quot;));
 
 vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;x_tenant_id&quot;));
+vars.put(&quot;kafkaBroker&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;kafkaBroker&quot;));
+
 </stringProp>
       </BeanShellPreProcessor>
       <hashTree/>
@@ -238,7 +240,7 @@ vars.put(&quot;UserAgent&quot;,String.valueOf(response_data));</stringProp>
             </BeanShellPostProcessor>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="IdentityTypeEvent" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="IdentityTypeEvent" enabled="false">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -287,6 +289,30 @@ vars.put(&quot;UserAgent&quot;,String.valueOf(response_data));</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
+          <hashTree/>
+          <jmeter.kafka.sampler.KafkaProducerSampler guiclass="jmeter.kafka.sampler.KafkaProducerSamplerGui" testclass="jmeter.kafka.sampler.KafkaProducerSampler" testname="Kafka Producer" enabled="true">
+            <stringProp name="Kafka brokers">${kafkaBroker}</stringProp>
+            <stringProp name="Kafka topic">raw_events_from_collector</stringProp>
+            <stringProp name="Kafka key">${kafkaKey}</stringProp>
+            <stringProp name="Request Data">{
+  &quot;date&quot;: &quot;${date}&quot;,
+  &quot;domain&quot;: &quot;${domain}&quot;,
+  &quot;event&quot;: &quot;${event}&quot;,
+  &quot;identityType&quot;: &quot;${identityType}&quot;,
+  &quot;identityValue&quot;: &quot;${identityValue}&quot;,
+  &quot;ip&quot;: &quot;${ip}&quot;,
+  &quot;isFirstTry&quot;: ${isFirstTry},
+  &quot;path&quot;: &quot;${path}&quot;,
+  &quot;refDomain&quot;: &quot;${refDomain}&quot;,
+  &quot;source&quot;: &quot;外部链接&quot;,
+  &quot;tenantId&quot;: ${x_tenant_id},
+  &quot;token&quot;: &quot;${token}&quot;,
+  &quot;userAgent&quot;: &quot;${UserAgent}&quot;,
+  &quot;utma&quot;: &quot;${utma}&quot;,
+  &quot;utmb&quot;: &quot;${utma}&quot;
+}
+  </stringProp>
+          </jmeter.kafka.sampler.KafkaProducerSampler>
           <hashTree/>
         </hashTree>
         <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
