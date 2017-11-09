@@ -184,12 +184,6 @@ vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
             <hashTree/>
           </hashTree>
         </hashTree>
-        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
-          <boolProp name="displayJMeterProperties">false</boolProp>
-          <boolProp name="displayJMeterVariables">true</boolProp>
-          <boolProp name="displaySystemProperties">false</boolProp>
-        </DebugSampler>
-        <hashTree/>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Performance_ReactFlow_CreateEvent_V1" enabled="true"/>
         <hashTree>
           <jmeter.kafka.sampler.KafkaProducerSampler guiclass="jmeter.kafka.sampler.KafkaProducerSamplerGui" testclass="jmeter.kafka.sampler.KafkaProducerSampler" testname="ReactFlow_CreateEvent" enabled="true">
