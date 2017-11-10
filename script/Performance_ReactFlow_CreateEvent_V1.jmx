@@ -200,7 +200,7 @@ vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
   &quot;customerId&quot;: ${customerId},
   &quot;date&quot;: &quot;${__time(yyyy-MM-dd,)}T${__time(HH:MM:SS,)}Z&quot;,
   &quot;targetName&quot;: &quot;asdf&quot;,
-  &quot;utma&quot;: &quot;${__Random(1000000000,9999999999999,)}.${__Random(1000000000,9999999999999,)}.${__Random(1000000000,9999999999999,)}.1510131488.1510131488.1&quot;,
+  &quot;utma&quot;: &quot;${__Random(100000000,999999999999,)}.${__Random(100000000,999999999999,)}.${__Random(100000000,999999999999,)}.${__Random(1000000000,9999999999999,)}.${__Random(1000000000,9999999999999,)}.1&quot;,
   &quot;userId&quot;: &quot;&quot;,
   &quot;tenantId&quot;: ${x_tenant_id}
 }
