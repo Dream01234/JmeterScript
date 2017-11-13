@@ -305,7 +305,7 @@ vars.put(&quot;UserAgent&quot;,String.valueOf(response_data));</stringProp>
   &quot;path&quot;: &quot;${path}&quot;,
   &quot;refDomain&quot;: &quot;${refDomain}&quot;,
   &quot;source&quot;: &quot;外部链接&quot;,
-  &quot;tenantId&quot;: ${x_tenant_id},
+  &quot;tenantId&quot;: 313,
   &quot;token&quot;: &quot;${token}&quot;,
   &quot;userAgent&quot;: &quot;${UserAgent}&quot;,
   &quot;utma&quot;: &quot;${utma}&quot;,
