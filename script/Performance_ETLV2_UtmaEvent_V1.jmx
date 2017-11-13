@@ -245,7 +245,7 @@ vars.put(&quot;UserAgent&quot;,String.valueOf(response_data));</stringProp>
          &quot;domain&quot;: &quot;${domain}&quot;,
          &quot;event&quot;: &quot;${event}&quot;,
          &quot;ip&quot;: &quot;${ip}&quot;,
-         &quot;isFirstTry&quot;: ${isFirstTry},
+
           &quot;path&quot;: &quot;${path}&quot;,
           &quot;refDomain&quot;: &quot;${refDomain}&quot;,
            &quot;source&quot;: &quot;外部链接&quot;,
