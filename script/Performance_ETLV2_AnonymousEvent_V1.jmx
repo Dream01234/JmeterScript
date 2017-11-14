@@ -240,7 +240,7 @@ vars.put(&quot;UserAgent&quot;,String.valueOf(response_data));</stringProp>
           </hashTree>
           <jmeter.kafka.sampler.KafkaProducerSampler guiclass="jmeter.kafka.sampler.KafkaProducerSamplerGui" testclass="jmeter.kafka.sampler.KafkaProducerSampler" testname="AnonymousEvent" enabled="true">
             <stringProp name="Kafka brokers">${kafkaBroker}</stringProp>
-            <stringProp name="Kafka topic">customer_event_from_collectorsession</stringProp>
+            <stringProp name="Kafka topic">raw_events_from_collector</stringProp>
             <stringProp name="Kafka key">${kafkaKey}</stringProp>
             <stringProp name="Request Data">{
        &quot;date&quot;: &quot;${date}&quot;,
