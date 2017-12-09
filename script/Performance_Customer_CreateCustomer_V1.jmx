@@ -79,7 +79,7 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="根据环境获取 " enabled="true">
+      <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="根据环境获取 " enabled="false">
         <stringProp name="filename"></stringProp>
         <stringProp name="parameters"></stringProp>
         <boolProp name="resetInterpreter">false</boolProp>
@@ -128,11 +128,11 @@ vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${customerServer}</stringProp>
+            <stringProp name="HTTPSampler.domain">172.16.1.117</stringProp>
             <stringProp name="HTTPSampler.port">18009</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">customers?x_tenant_id=${x_tenant_id}</stringProp>
+            <stringProp name="HTTPSampler.path">customers?x_tenant_id=1014</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -275,5 +275,9 @@ vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
         <hashTree/>
       </hashTree>
     </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="工作台" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
   </hashTree>
 </jmeterTestPlan>
