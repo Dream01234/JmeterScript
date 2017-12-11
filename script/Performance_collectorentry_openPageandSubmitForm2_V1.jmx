@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="testcase.env" elementType="Argument">
             <stringProp name="Argument.name">testcase.env</stringProp>
-            <stringProp name="Argument.value">${__P(testcase.env,validation)}</stringProp>
+            <stringProp name="Argument.value">${__P(testcase.env,production)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">请求环境</stringProp>
           </elementProp>
@@ -85,7 +85,6 @@ vars.put(&quot;uuid&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmete
 vars.put(&quot;appid&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_track_appid&quot;));
 vars.put(&quot;code&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_track_code&quot;));
 vars.put(&quot;openid&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_track_openid&quot;));
-vars.put(&quot;customerid&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_track_customerid&quot;));
 </stringProp>
       </BeanShellPreProcessor>
       <hashTree/>
@@ -136,13 +135,14 @@ vars.put(&quot;customerid&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot
               <stringProp name="Argument.desc">customer openid</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
-            <elementProp name="customerid" elementType="Argument">
-              <stringProp name="Argument.name">customerid</stringProp>
-              <stringProp name="Argument.value">4974290</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
           </collectionProp>
         </Arguments>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
         <hashTree/>
         <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="sid" enabled="true">
           <stringProp name="CounterConfig.start">1</stringProp>
