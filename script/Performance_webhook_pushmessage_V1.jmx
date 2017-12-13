@@ -157,6 +157,14 @@ vars.put(&quot;kafkaBroker&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
         </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Performance_webhook_pushmessage_V1" enabled="true"/>
         <hashTree>
+          <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="JSR223 Listener" enabled="true">
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">vars.put(&apos;requestId&apos;, UUID.randomUUID().toString().replace(&quot;-&quot;, &quot;&quot;))</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Listener>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GetUserAgent" enabled="false">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -189,7 +197,16 @@ vars.put(&quot;UserAgent&quot;,String.valueOf(response_data));</stringProp>
             <stringProp name="Kafka brokers">172.16.2.52:9092</stringProp>
             <stringProp name="Kafka topic">webhook-event</stringProp>
             <stringProp name="Kafka key">${__time(SSS,)}</stringProp>
-            <stringProp name="Request Data">{&quot;webhookId&quot;:&quot;106&quot;,&quot;upstream&quot;:&quot;eventjob&quot;,&quot;tenantId&quot;:&quot;1014&quot;,&quot;event&quot;:&quot;flow/webhook-notification&quot;,&quot;content&quot;:{&quot;customerId&quot;:4974290,&quot;flowKey&quot;:&quot;flow-32867_2_false&quot;,&quot;flowStep&quot;:&quot;3&quot;,&quot;notificationType&quot;:&quot;json&quot;,&quot;notification&quot;:&quot;{\n\&quot;test\&quot;:\&quot;perf\&quot;\n}&quot;}}</stringProp>
+            <stringProp name="Request Data">{&quot;webhookId&quot;:&quot;106&quot;,
+&quot;requestId&quot;:&quot;${requestId}&quot;,
+&quot;upstream&quot;:&quot;eventjob&quot;,
+&quot;tenantId&quot;:&quot;1014&quot;,
+&quot;event&quot;:&quot;flow/webhook-notification&quot;,
+&quot;content&quot;:
+    {&quot;customerId&quot;:4974290,&quot;flowKey&quot;:&quot;flow-32867_2_false&quot;,&quot;flowStep&quot;:&quot;3&quot;,
+    &quot;notificationType&quot;:&quot;json&quot;,
+    &quot;notification&quot;:&quot;{\n\&quot;test\&quot;:\&quot;perf\&quot;\n}&quot;}
+}</stringProp>
           </jmeter.kafka.sampler.KafkaProducerSampler>
           <hashTree>
             <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="false">
