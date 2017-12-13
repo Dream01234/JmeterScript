@@ -233,13 +233,33 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
         </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="CustomerMangerSerache" enabled="true"/>
         <hashTree>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+try{
+    SimpleDateFormat sf = new SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos; HH:mm:ss&apos;Z&apos;&quot;);
+    Calendar cal = Calendar.getInstance();
+    cal.setTime(new Date());
+    cal.add(Calendar.HOUR,-8); 
+
+    vars.put(&quot;utctime&quot;,sf.format(cal.getTime()));
+}
+catch(Exception e){
+}</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BatchAddUserDefinedEvent" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;campaign&quot;:&quot;&quot;,&quot;campaignName&quot;:&quot;wu&quot;,&quot;customerId&quot;:&quot;${customerId}&quot;,&quot;date&quot;:&quot;${__time(yyyy-MM-dd&apos;T&apos;HH:mm:ss&apos;Z&apos;,)}&quot;,&quot;event&quot;:&quot;c_wushan&quot;,&quot;source&quot;:&quot;&quot;,&quot;summary&quot;:&quot;&quot;,&quot;targetId&quot;:&quot;&quot;,&quot;targetName&quot;:&quot;红妹子测试创建自定义事件-勿删！&quot;}</stringProp>
+                  <stringProp name="Argument.value">{&quot;campaign&quot;:&quot;&quot;,&quot;campaignName&quot;:&quot;wu&quot;,&quot;customerId&quot;:&quot;${customerId}&quot;,&quot;date&quot;:&quot;${utctime}&quot;,&quot;event&quot;:&quot;c_wushan&quot;,&quot;source&quot;:&quot;&quot;,&quot;summary&quot;:&quot;&quot;,&quot;targetId&quot;:&quot;&quot;,&quot;targetName&quot;:&quot;红妹子测试创建自定义事件-勿删！&quot;}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -273,15 +293,6 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
-            <boolProp name="resetInterpreter">false</boolProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="script">import com.jmeter.util.*;
-long mill = DateUtil.getUTCTimeDiffNow();
-vars.put(&quot;localTime&quot;,DateUtil.getLocalTime(mill));</stringProp>
-          </BeanShellPreProcessor>
-          <hashTree/>
         </hashTree>
       </hashTree>
     </hashTree>
