@@ -182,7 +182,7 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
             <hashTree/>
           </hashTree>
         </hashTree>
-        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="创建极光模版-自定义" enabled="true"/>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="创建极光模版-通知" enabled="true"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="template" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
