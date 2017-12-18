@@ -15,7 +15,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="threadgroup.count" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.count</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.count,1)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.count,10)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">线程数</stringProp>
           </elementProp>
@@ -33,7 +33,7 @@
           </elementProp>
           <elementProp name="threadgroup.loops" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.loops</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.loops,10)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.loops,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">循环次数</stringProp>
           </elementProp>
@@ -161,8 +161,8 @@ vars.put(&quot;password&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;p
         </ResultCollector>
         <hashTree/>
         <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="客户自增" enabled="true">
-          <stringProp name="CounterConfig.start">5554080</stringProp>
-          <stringProp name="CounterConfig.end">5604080</stringProp>
+          <stringProp name="CounterConfig.start">1111111111111111111</stringProp>
+          <stringProp name="CounterConfig.end">1111111111111611110</stringProp>
           <stringProp name="CounterConfig.incr">1</stringProp>
           <stringProp name="CounterConfig.name">customerId</stringProp>
           <stringProp name="CounterConfig.format"></stringProp>
@@ -259,7 +259,15 @@ catch(Exception e){
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;campaign&quot;:&quot;&quot;,&quot;campaignName&quot;:&quot;wu&quot;,&quot;customerId&quot;:&quot;${customerId}&quot;,&quot;date&quot;:&quot;${utctime}&quot;,&quot;event&quot;:&quot;c_wushan&quot;,&quot;source&quot;:&quot;&quot;,&quot;summary&quot;:&quot;&quot;,&quot;targetId&quot;:&quot;&quot;,&quot;targetName&quot;:&quot;红妹子测试创建自定义事件-勿删！&quot;}</stringProp>
+                  <stringProp name="Argument.value">{&quot;campaign&quot;:&quot;&quot;,&#xd;
+&quot;campaignName&quot;:&quot;wu&quot;,&#xd;
+&quot;customerId&quot;:&quot;${customerId}&quot;,&#xd;
+&quot;date&quot;:&quot;${utctime}&quot;,&#xd;
+&quot;event&quot;:&quot;c_wushan&quot;,&#xd;
+&quot;source&quot;:&quot;&quot;,&#xd;
+&quot;summary&quot;:&quot;&quot;,&#xd;
+&quot;targetId&quot;:&quot;&quot;,&#xd;
+&quot;targetName&quot;:&quot;红妹子测试创建自定义事件-勿删！&quot;}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>

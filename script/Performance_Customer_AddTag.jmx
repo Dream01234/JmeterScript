@@ -161,8 +161,8 @@ vars.put(&quot;password&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;p
         </ResultCollector>
         <hashTree/>
         <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="客户自增" enabled="true">
-          <stringProp name="CounterConfig.start">5554080</stringProp>
-          <stringProp name="CounterConfig.end">5604080</stringProp>
+          <stringProp name="CounterConfig.start">1111111111111111111</stringProp>
+          <stringProp name="CounterConfig.end">1111111111111611110</stringProp>
           <stringProp name="CounterConfig.incr">1</stringProp>
           <stringProp name="CounterConfig.name">customerId</stringProp>
           <stringProp name="CounterConfig.format"></stringProp>
