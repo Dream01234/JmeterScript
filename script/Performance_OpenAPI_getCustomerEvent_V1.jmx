@@ -173,26 +173,13 @@ catch(Exception e){
           <stringProp name="LoopController.loops">10</stringProp>
         </LoopController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="关注公众号" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="获取关注公众号的事件" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&#xd;
-  &quot;customerId&quot;: ${customerId},&#xd;
-  &quot;event&quot;: &quot;subscribe&quot;,&#xd;
-  &quot;targetId&quot;: &quot;1014&quot;,&#xd;
-  &quot;targetName&quot;: &quot;桦洋商贸&quot;,&#xd;
-  &quot;date&quot;: &quot;${utctime}&quot;,&#xd;
-  &quot;source&quot;: &quot;人民广场&quot;,&#xd;
-  &quot;contentName&quot;: &quot;传单&quot;,&#xd;
-  &quot;score&quot;: 10,&#xd;
-  &quot;tag&quot;: &quot;喜欢看看传单&quot;,&#xd;
-  &quot;campaign&quot;: &quot;002&quot;,&#xd;
-  &quot;campaignName&quot;: &quot;发传单那次&quot;,&#xd;
-  &quot;summary&quot;: &quot;nothing&quot;&#xd;
-}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -201,8 +188,8 @@ catch(Exception e){
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">v1/customerevents?access_token=${accesstoken}</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <stringProp name="HTTPSampler.path">v1/customerevents?access_token=${accesstoken}&amp;customerId=${customerId}&amp;event=subscribe&amp;lastUpdatedFrom=2017-01-01 00:00:00.000&amp;lastUpdatedTo=2018-01-01 00:00:00.000&amp;max=20&amp;rows=20&amp;page=1&amp;sidx=id&amp;sord=desc</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>

@@ -92,7 +92,7 @@ vars.put(&quot;secret&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;sec
 //vars.put(&quot;mysql_rds_driver_url&quot;,&quot;11&quot;);</stringProp>
       </BeanShellPreProcessor>
       <hashTree/>
-      <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="计数器" enabled="true">
+      <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="计数器" enabled="false">
         <stringProp name="CounterConfig.start">1111111111111111111</stringProp>
         <stringProp name="CounterConfig.end"></stringProp>
         <stringProp name="CounterConfig.incr">1</stringProp>
@@ -101,7 +101,7 @@ vars.put(&quot;secret&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;sec
         <boolProp name="CounterConfig.per_user">false</boolProp>
       </CounterConfig>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="getCustomerByIdentityType" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="getorder-all" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -173,26 +173,13 @@ catch(Exception e){
           <stringProp name="LoopController.loops">10</stringProp>
         </LoopController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="关注公众号" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="获取所有订单的压测" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&#xd;
-  &quot;customerId&quot;: ${customerId},&#xd;
-  &quot;event&quot;: &quot;subscribe&quot;,&#xd;
-  &quot;targetId&quot;: &quot;1014&quot;,&#xd;
-  &quot;targetName&quot;: &quot;桦洋商贸&quot;,&#xd;
-  &quot;date&quot;: &quot;${utctime}&quot;,&#xd;
-  &quot;source&quot;: &quot;人民广场&quot;,&#xd;
-  &quot;contentName&quot;: &quot;传单&quot;,&#xd;
-  &quot;score&quot;: 10,&#xd;
-  &quot;tag&quot;: &quot;喜欢看看传单&quot;,&#xd;
-  &quot;campaign&quot;: &quot;002&quot;,&#xd;
-  &quot;campaignName&quot;: &quot;发传单那次&quot;,&#xd;
-  &quot;summary&quot;: &quot;nothing&quot;&#xd;
-}</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -201,8 +188,8 @@ catch(Exception e){
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">v1/customerevents?access_token=${accesstoken}</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <stringProp name="HTTPSampler.path">v1/deals?access_token=${accesstoken}&amp;rows=20&amp;page=1&amp;sidx=dateOrder&amp;sord=desc</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -214,7 +201,7 @@ catch(Exception e){
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="响应断言" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="514841930">subscribe</stringProp>
+                <stringProp name="1082596930">records</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -222,12 +209,6 @@ catch(Exception e){
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="${customerId}" enabled="true">
-            <boolProp name="displayJMeterProperties">false</boolProp>
-            <boolProp name="displayJMeterVariables">true</boolProp>
-            <boolProp name="displaySystemProperties">false</boolProp>
-          </DebugSampler>
-          <hashTree/>
         </hashTree>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
