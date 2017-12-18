@@ -200,11 +200,11 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{	&#xd;
 	&quot;status&quot;: &quot;initial&quot;,&#xd;
-	&quot;template&quot;: ${jmeter_sms_template}, &#xd;
+	&quot;template&quot;: &quot;2979&quot;, &#xd;
 	&quot;sentType&quot;: &quot;manual&quot;,&#xd;
 	&quot;taskType&quot;: &quot;send&quot;,&#xd;
-	&quot;listId&quot;: ${jmeter_sms_listId},&#xd;
-	&quot;smsChannel&quot;:${jmeter_sms_channel}&#xd;
+	&quot;listId&quot;: &quot;25941&quot;,&#xd;
+	&quot;smsChannel&quot;:&quot;222&quot;&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -249,21 +249,14 @@ sampler.getHeaderManager().removeHeaderNamed(&quot;accept&quot;);
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Send" enabled="true">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value"></stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
             </elementProp>
             <stringProp name="HTTPSampler.domain">${server_url}</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">sms/mass_send/${templateId}/send</stringProp>
+            <stringProp name="HTTPSampler.path">sms/mass_send/795861/send</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
