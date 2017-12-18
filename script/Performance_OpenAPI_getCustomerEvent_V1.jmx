@@ -188,7 +188,7 @@ catch(Exception e){
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">v1/customerevents?access_token=${accesstoken}&amp;customerId=1111111111111501111&amp;event=subscribe&amp;lastUpdatedFrom=2017-01-01 00:00:00.000&amp;lastUpdatedTo=2018-01-01 00:00:00.000&amp;max=20&amp;rows=20&amp;page=1&amp;sidx=id&amp;sord=desc</stringProp>
+            <stringProp name="HTTPSampler.path">v1/customerevents?access_token=${accesstoken}&amp;customerId=${customerId}&amp;event=subscribe&amp;lastUpdatedFrom=2017-01-01 00:00:00.000&amp;lastUpdatedTo=2018-01-01 00:00:00.000&amp;max=20&amp;rows=20&amp;page=1&amp;sidx=id&amp;sord=desc</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
