@@ -77,7 +77,6 @@
         <stringProp name="script">import com.jmeter.atf.ATFDic;
 
 vars.put(&quot;kafkaBroker&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;kafkaBroker&quot;));
-vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;x_tenant_id&quot;));
 </stringProp>
       </BeanShellPreProcessor>
       <hashTree/>
@@ -124,7 +123,7 @@ vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
           </DebugSampler>
           <hashTree/>
           <jmeter.kafka.sampler.KafkaProducerSampler guiclass="jmeter.kafka.sampler.KafkaProducerSamplerGui" testclass="jmeter.kafka.sampler.KafkaProducerSampler" testname="ReactFlow_CreateEvent" enabled="true">
-            <stringProp name="Kafka brokers">127.0.0.1:9092</stringProp>
+            <stringProp name="Kafka brokers">${kafkaBroker}</stringProp>
             <stringProp name="Kafka topic">raw_events_from_collector</stringProp>
             <stringProp name="Kafka key">${customerId}</stringProp>
             <stringProp name="Request Data">{
@@ -139,7 +138,7 @@ vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
   &quot;targetName&quot;: &quot;Performance_Page&quot;,
   &quot;utma&quot;: &quot;${__Random(100000000,999999999999,)}.${__Random(100000000,999999999999,)}.${__Random(100000000,999999999999,)}.${__Random(1000000000,9999999999999,)}.${__Random(1000000000,9999999999999,)}.1&quot;,
   &quot;userId&quot;: &quot;&quot;,
-  &quot;tenantId&quot;: ${x_tenant_id}
+  &quot;tenantId&quot;: 1014
 }
 
 
@@ -148,7 +147,7 @@ vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
           </jmeter.kafka.sampler.KafkaProducerSampler>
           <hashTree/>
         </hashTree>
-        <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
+        <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="false">
           <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="graphiteMetricsSender" elementType="Argument">
@@ -205,7 +204,7 @@ vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
           <stringProp name="timeoutInMs">${aggregate.time}</stringProp>
         </SyncTimer>
         <hashTree/>
-        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="聚合报告" enabled="true">
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="聚合报告" enabled="false">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
