@@ -15,7 +15,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="threadgroup.count" elementType="Argument">
             <stringProp name="Argument.name">threadgroup.count</stringProp>
-            <stringProp name="Argument.value">${__P(threadgroup.count,1)}</stringProp>
+            <stringProp name="Argument.value">${__P(threadgroup.count,5)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">线程数</stringProp>
           </elementProp>
@@ -87,6 +87,11 @@ vars.put(&quot;code&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmete
 vars.put(&quot;openid&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quot;jmeter_track_openid&quot;));
 </stringProp>
       </BeanShellPreProcessor>
+      <hashTree/>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie 管理器" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+      </CookieManager>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WechatPage" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>

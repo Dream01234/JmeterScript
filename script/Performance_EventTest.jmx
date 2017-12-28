@@ -189,21 +189,20 @@ vars.put(&quot;x_tenant_id&quot;,ATFDic.GetData(&quot;${testcase.env}&quot;,&quo
           <jmeter.kafka.sampler.KafkaProducerSampler guiclass="jmeter.kafka.sampler.KafkaProducerSamplerGui" testclass="jmeter.kafka.sampler.KafkaProducerSampler" testname="ReactFlow_CreateEvent" enabled="true">
             <stringProp name="Kafka brokers">${kafkaBroker}</stringProp>
             <stringProp name="Kafka topic">customer_event_from_collectorsession</stringProp>
-            <stringProp name="Kafka key">-698017823</stringProp>
-            <stringProp name="Request Data">
-
-       &quot;date&quot;: &quot;2017-12-20T09:13:48Z&quot;,
+            <stringProp name="Kafka key">-1377290516</stringProp>
+            <stringProp name="Request Data">{      
+      &quot;date&quot;: &quot;2017-12-28T03:24:59Z&quot;,
        &quot;domain&quot;: &quot;host.convertwork.cn&quot;,
        &quot;event&quot;: &quot;open_page&quot;,
        &quot;ip&quot;: &quot;116.226.184.53&quot;,
-        &quot;path&quot;: &quot;/page/1238467299/430475344a9a419f9d63a1512f2be070&quot;,
+        &quot;path&quot;: &quot;/page/1238467299/7734a6be1aca4ddcaf660757b24846f2&quot;,
        &quot;refDomain&quot;: &quot;&quot;,
-        &quot;source&quot;: &quot;微信朋友圈&quot;,
+        &quot;source&quot;: &quot;微信图文&quot;,
         &quot;tenantId&quot;: 1,
-        &quot;token&quot;: &quot;7336180299078386418.27803086&quot;,
-        &quot;userAgent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36&quot;,
-        &quot;utma&quot;: &quot;7336180299078386418.27803086.1238467299.1513761228.1513761228.1&quot;,
-        &quot;utmb&quot;: &quot;7336180299078386418.27803086.1513761228.1513761228.1&quot;
+        &quot;token&quot;: &quot;7336180299078386418.1864112817&quot;,
+        &quot;userAgent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36&quot;,
+        &quot;utma&quot;: &quot;7336180299078386418.1864112817.1238467299.1514431499.1514431499.1&quot;,
+        &quot;utmb&quot;: &quot;7336180299078386418.1864112817.1514431499.1514431499.1&quot;
  }
 
 
