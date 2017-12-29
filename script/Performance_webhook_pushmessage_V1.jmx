@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.3 r1808647">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -193,7 +193,7 @@ vars.put(&quot;UserAgent&quot;,String.valueOf(response_data));</stringProp>
             </BeanShellPostProcessor>
             <hashTree/>
           </hashTree>
-          <jmeter.kafka.sampler.KafkaProducerSampler guiclass="jmeter.kafka.sampler.KafkaProducerSamplerGui" testclass="jmeter.kafka.sampler.KafkaProducerSampler" testname="webhook" enabled="true">
+          <jmeter.kafka.sampler.KafkaProducerSampler guiclass="jmeter.kafka.sampler.KafkaProducerSamplerGui" testclass="jmeter.kafka.sampler.KafkaProducerSampler" testname="webhook_test_env" enabled="false">
             <stringProp name="Kafka brokers">${kafkaBroker}</stringProp>
             <stringProp name="Kafka topic">webhook-event</stringProp>
             <stringProp name="Kafka key">${requestId}</stringProp>
@@ -206,6 +206,30 @@ vars.put(&quot;UserAgent&quot;,String.valueOf(response_data));</stringProp>
     {&quot;customerId&quot;:4974290,&quot;flowKey&quot;:&quot;flow-32867_2_false&quot;,&quot;flowStep&quot;:&quot;3&quot;,
     &quot;notificationType&quot;:&quot;json&quot;,
     &quot;notification&quot;:&quot;{\n\&quot;test\&quot;:\&quot;perf\&quot;\n}&quot;}
+}</stringProp>
+          </jmeter.kafka.sampler.KafkaProducerSampler>
+          <hashTree/>
+          <jmeter.kafka.sampler.KafkaProducerSampler guiclass="jmeter.kafka.sampler.KafkaProducerSamplerGui" testclass="jmeter.kafka.sampler.KafkaProducerSampler" testname="webhook_validation_env" enabled="true">
+            <stringProp name="Kafka brokers">${kafkaBroker}</stringProp>
+            <stringProp name="Kafka topic">webhook-event</stringProp>
+            <stringProp name="Kafka key">${requestId}</stringProp>
+            <stringProp name="Request Data">{
+&quot;c_flatten&quot;:true,
+&quot;webhookId&quot;:&quot;28&quot;,
+&quot;upstream&quot;:&quot;customer&quot;,
+&quot;requestId&quot;:&quot;${requestId}&quot;,
+&quot;tenantId&quot;:&quot;26&quot;,
+&quot;flowKey&quot;:&quot;flow-8042_0_false&quot;,
+&quot;event&quot;:&quot;flow/webhook-notification&quot;,
+&quot;flowId&quot;:8042,
+&quot;flowStep&quot;:&quot;3&quot;,
+&quot;content&quot;:{
+  &quot;fId&quot;:&quot;8042&quot;,
+  &quot;fstep&quot;:&quot;3&quot;,
+  &quot;id&quot;:&quot;17664420&quot;,
+  &quot;name&quot;:&quot;lish&quot;,
+  &quot;attr1&quot;:&quot;&quot;
+}
 }</stringProp>
           </jmeter.kafka.sampler.KafkaProducerSampler>
           <hashTree/>
